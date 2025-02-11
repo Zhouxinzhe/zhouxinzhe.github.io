@@ -1,0 +1,13 @@
+---
+layout:       post
+title:        "My First Blog"
+author:       "Orchid"
+header-style: text
+catalog:      true
+tags:
+    - markdown
+---
+
+# Hello world
+
+你好
