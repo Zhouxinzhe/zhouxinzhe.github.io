@@ -1,9 +1,11 @@
 ---
 layout:       post
 title:        "My First Blog"
+subtitle:     "Start from here"
 author:       "Orchid"
 header-style: text
 catalog:      true
+hidden:       false
 tags:
     - Markdown
 ---
