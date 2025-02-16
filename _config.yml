@@ -77,6 +77,7 @@ sidebar: true # whether or not using Sidebar.
 sidebar-about-description: "Fighting for the bright future."
 sidebar-avatar: https://avatars.githubusercontent.com/u/119389823?s=400&u=77cba1d1c3a5b3e2c3a18cd7421fc1ae6935a6c9&v=4 # use absolute URL, seeing it's used in both `/` and `/about/`
 sidebar-wechat: zxz1150146797
+sidebar-email: zhou_xinzhe@sjtu.edu.cn
 
 # Featured Tags
 featured-tags: false # whether or not using Feature-Tags
