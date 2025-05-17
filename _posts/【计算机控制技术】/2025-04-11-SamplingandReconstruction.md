@@ -167,18 +167,18 @@ $$
 $$
 \begin{align}
 &e^*(t) = \sum_{n=0}^{\infty} e(nT) \delta(t - nT) \\
-\Rightarrow \quad &E^*(s) = \sum_{n=0}^{\infty} e(nT) \varepsilon^{-nTs}
+\Rightarrow \quad &E^{\star}(s) = \sum_{n=0}^{\infty} e(nT) \varepsilon^{-nTs}
 \end{align}
 $$
 
-其中，$e(t)$ 是采样器的输入信号，如果 $e(t)$ 在 $t = kT$ 时刻不连续，则 $e(kT) = e(kT^+)$ 。**$E^*(s)$ 被称为 $e(t)$ 的 Starred Transform**。
+其中，$e(t)$ 是采样器的输入信号，如果 $e(t)$ 在 $t = kT$ 时刻不连续，则 $e(kT) = e(kT^+)$ 。**$E^{\star}(s)$ 被称为 $e(t)$ 的 Starred Transform**。
 
-那么，除了 $E^*(s)$ 的定义，是否还有其它方法来计算 $E^*(s)$ 呢？毕竟求解无穷级数不是一件一直很简单的事情。
+那么，除了 $E^{\star}(s)$ 的定义，是否还有其它方法来计算 $E^{\star}(s)$ 呢？毕竟求解无穷级数不是一件一直很简单的事情。
 
 ### 留数法
 
 $$
-E^*(s) = \sum_{\text{at poles of } E(\lambda)} \left[ \text{residues of } F(\lambda) \right], \text{ where } F(\lambda) = E(\lambda) \frac{1}{1 - \varepsilon^{-T(s - \lambda)}}
+E^{\star}(s) = \sum_{\text{at poles of } E(\lambda)} \left[ \text{residues of } F(\lambda) \right], \text{ where } F(\lambda) = E(\lambda) \frac{1}{1 - \varepsilon^{-T(s - \lambda)}}
 $$
 
 学过数理方法的同学，应该知道什么是留数，当然不知道也没关系，下面给出求解留数的方法，掌握即可：
@@ -202,13 +202,13 @@ $$
 * 如果 $e(t)$ 在所有的采样时刻都是连续的
   
   $$
-  E^*(s) = \frac{1}{T} \sum_{n=-\infty}^{\infty} E(s + j n \omega_s), \quad \omega_s = \frac{2\pi}{T}
+  E^{\star}(s) = \frac{1}{T} \sum_{n=-\infty}^{\infty} E(s + j n \omega_s), \quad \omega_s = \frac{2\pi}{T}
   $$
 
 * 如果 $e(t)$ 在部分采样时刻是不连续的，即存在跳变的
   
   $$
-  E^*(s) = \frac{1}{T} \sum_{n=-\infty}^{\infty} E(s + j n \omega_s) + \frac{1}{2} \sum_{n=0}^{\infty} \Delta e(nT) \varepsilon^{-nTs}, \quad \omega_s = \frac{2\pi}{T}
+  E^{\star}(s) = \frac{1}{T} \sum_{n=-\infty}^{\infty} E(s + j n \omega_s) + \frac{1}{2} \sum_{n=0}^{\infty} \Delta e(nT) \varepsilon^{-nTs}, \quad \omega_s = \frac{2\pi}{T}
   $$
   
   其中，$\Delta e(nT)$ 就是采样时刻的信号跳变量
@@ -216,16 +216,16 @@ $$
 * 特别的，如果 $e(t)$ 只在 $t=0$ 时刻是跳变的，其余采样时刻均连续
   
   $$
-  E^*(s) = \frac{1}{T} \sum_{n=-\infty}^{\infty} E(s + j n \omega_s) + \frac{e(0^+)}{2}, \quad \omega_s = \frac{2\pi}{T}
+  E^{\star}(s) = \frac{1}{T} \sum_{n=-\infty}^{\infty} E(s + j n \omega_s) + \frac{e(0^+)}{2}, \quad \omega_s = \frac{2\pi}{T}
   $$
 
 ### Properties of E*(s)
 
-1. $E^*(s)$ 在虚轴方向上是周期变化的，周期为 $j\omega_s$
+1. $E^{\star}(s)$ 在虚轴方向上是周期变化的，周期为 $j\omega_s$
 
    从定义中很容易看出来
 
-2. 如果 $E(s)$ 存在极点 $s=s_1$，则 $E^*(s)$ 存在极点 $s = s_1 + j m \omega_s, \quad m = 0, \pm 1, \pm 2, \ldots$
+2. 如果 $E(s)$ 存在极点 $s=s_1$，则 $E^{\star}(s)$ 存在极点 $s = s_1 + j m \omega_s, \quad m = 0, \pm 1, \pm 2, \ldots$
 
    从泊松公式中很容易看出来（零点不具备该性质）
 
@@ -302,6 +302,7 @@ $$
 
 \text{相位响应：}\angle G_{h1}(j\omega) = \tan^{-1} \left( \frac{2\pi \omega}{\omega_s} \right) - \frac{2\pi \omega}{\omega_s}
 $$
+
 <img src="https://notes.sjtu.edu.cn/uploads/upload_144bf28f3c88905458bd1705b25fcd18.png" style="zoom:67%;" />
 
 ### Comparison
