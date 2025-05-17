@@ -20,38 +20,38 @@ tags:
 
   <img src="https://notes.sjtu.edu.cn/uploads/upload_11e4b0693d868cf6957b1c27521060fb.png" style="zoom:67%;" />
 
-  第一反应是，能不能找到信号 $E(s)$ 和 $C(s)$ 之间的传递函数，如果能，那么该系统的分析也就变成了对于系统传递函数的分析。可以吗？关键在于 $E(s)$ 和 $E^*(s)$ 之间是否存在传递函数，答案是无。因为从 $E(s)$ 到 $E^*(s)$ 经过了一个采样器 $T$，而很显然，这个采样器的隐藏含义是，将信号从连续转换为离散，因此是不能用传递函数表示这一过程的。
+  第一反应是，能不能找到信号 $E(s)$ 和 $C(s)$ 之间的传递函数，如果能，那么该系统的分析也就变成了对于系统传递函数的分析。可以吗？关键在于 $E(s)$ 和 $E^{\star}(s)$ 之间是否存在传递函数，答案是无。因为从 $E(s)$ 到 $E^{\star}(s)$ 经过了一个采样器 $T$，而很显然，这个采样器的隐藏含义是，将信号从连续转换为离散，因此是不能用传递函数表示这一过程的。
 
-  那么如何分析这个系统呢？既然无法找到 $E(s)$ 和 $C(s)$ 之间的传递函数，我们**可以将 $E^*(s)$ 视作系统的输入**，尝试寻找 $E^*(s)$ 和 $C(s)$ 之间的关系：
+  那么如何分析这个系统呢？既然无法找到 $E(s)$ 和 $C(s)$ 之间的传递函数，我们**可以将 $E^{\star}(s)$ 视作系统的输入**，尝试寻找 $E^{\star}(s)$ 和 $C(s)$ 之间的关系：
   
   $$
-  C(s) = E^*(s) G(s)
+  C(s) = E^{\star}(s) G(s)
   $$
   
   下面给出一条**非常重要的公式：**
   
   $$
-  \text{If} \ C(s) = E^*(s) G(s), \quad \text{then} \ C^*(s) = E^*(s) G^*(s)
+  \text{If} \ C(s) = E^{\star}(s) G(s), \quad \text{then} \ C^*(s) = E^{\star}(s) G^*(s)
   $$
   
   证明：
   
   $$
   \begin{align}
-  \text{已知：}&E^*(s) = \sum_{n=0}^{\infty} e(nT) \varepsilon^{-nTs} \\
+  \text{已知：}&E^{\star}(s) = \sum_{n=0}^{\infty} e(nT) \varepsilon^{-nTs} \\
   &\Rightarrow C^*(s) = \sum_{n=0}^{\infty} e(nT) \varepsilon^{-nTs}G(s) \\
   &\Rightarrow c(t) = \sum_{n=0}^{\infty} e(nT) g(t-nT) \\
   &\Rightarrow c(kT) = \sum_{n=0}^{\infty} e(nT) g(kT-nT), \quad (\text{when } k \le n, \ g(kT-nT) = 0)\\
   &\Rightarrow C^*(s) = \sum_{k=0}^{\infty} c(kT) \varepsilon^{-kTs} = \sum_{k=n}^{\infty} [\sum_{n=0}^{\infty} e(nT) g(kT-nT)] \varepsilon^{-kTs}, \quad \text{let k-n=m} \\
   &\Rightarrow C^*(s) = \sum_{m=0}^{\infty}\sum_{n=0}^{\infty} e(nT) g(mT) \varepsilon^{-(m+n)Ts} = \sum_{n=0}^{\infty} e(nT) \varepsilon^{-nTs}\sum_{m=0}^{\infty} g(mT) \varepsilon^{-mTs} \\
-  &\Rightarrow C^*(s) = E^*(s)G^*(s)
+  &\Rightarrow C^*(s) = E^{\star}(s)G^*(s)
   \end{align}
   $$
   
   同时要注意一些**错误的变式**：
   
   $$
-  \text{If} \ C(s) = E(s) G(s), \quad \text{then} \ C^*(s) = E^*(s) G^*(s)
+  \text{If} \ C(s) = E(s) G(s), \quad \text{then} \ C^*(s) = E^{\star}(s) G^*(s)
   $$
   
   **注意上述这个式子是错误变式！！！！正确的如下：**
@@ -66,11 +66,11 @@ tags:
 
   <img src="https://notes.sjtu.edu.cn/uploads/upload_b43cfe9dc20a0e69b06b1d28db24fa09.png" style="zoom:67%;" />
 
-  在开环采样信号系统中，我们的做法是，**将 $E^*(s)$ 视作系统的输入**；实际上可以进一步规范化这个操作，**进入 $T$ 的信号视作系统的输出信号，$T$ 输出的信号视作系统的输入信号**。也就是说，现在系统有两个输入信号，即 $R(s)$ 和 $E^*(s)$；系统有两个输出信号，即 $E(s)$ 和 $C(s)$。分析这个系统，只需列出从输入信号到输出信号的传递函数即可：
+  在开环采样信号系统中，我们的做法是，**将 $E^{\star}(s)$ 视作系统的输入**；实际上可以进一步规范化这个操作，**进入 $T$ 的信号视作系统的输出信号，$T$ 输出的信号视作系统的输入信号**。也就是说，现在系统有两个输入信号，即 $R(s)$ 和 $E^{\star}(s)$；系统有两个输出信号，即 $E(s)$ 和 $C(s)$。分析这个系统，只需列出从输入信号到输出信号的传递函数即可：
   
   $$
   \begin{cases}
-  	C(s) = E^*(s)G(s) \\
+  	C(s) = E^{\star}(s)G(s) \\
   	E(s) = R(s)-C(s)H(s) \\
   \end{cases}
   $$
@@ -79,9 +79,9 @@ tags:
   
   $$
   \begin{align}
-  E(s) &= R(s) - E^*(s)G(s)H(s) \\
-  E^*(s) &= R^*(s) - E^*(s)[G(s)H(s)]^* \\
-  \Rightarrow E^*(s) &= \frac{R^*(s)}{1 + [G(s)H(s)]^*} \\
+  E(s) &= R(s) - E^{\star}(s)G(s)H(s) \\
+  E^{\star}(s) &= R^*(s) - E^{\star}(s)[G(s)H(s)]^* \\
+  \Rightarrow E^{\star}(s) &= \frac{R^*(s)}{1 + [G(s)H(s)]^*} \\
   \Rightarrow C(s) &= \frac{R^*(s)G(s)}{1 + [G(s)H(s)]^*}, \quad C^*(s) = \frac{R^*(s)G^*(s)}{1 + [G(s)H(s)]^*}
   \end{align}
   $$

@@ -12,8 +12,8 @@ tags:
 
 在上一章中，我们已经学习了如何分析涉及信号采样与重构的系统，即当一个系统中既有连续信号又有离散信号时，如何分析系统输入与系统输出之间的关系（求得*类传递函数*的关系）。但是不是够了呢？当然不是，在上一节课的分析全部是在 s 域中，因此分析结果往往包含 **$[\cdot]^*$ 项**，即 starred transform 项，这一项在系统分析中会有什么问题呢？
 
-1. $E^*(s) = \sum_{n=0}^{\infty} e(nT) \varepsilon^{-nTs}$，在 starred transform 中存在非实数项 $\varepsilon^{-nTs}$，这一项往往在经过复杂运算后难以进行拉普拉斯反变换（可以通过时移性质来解决，但非实数项终究是不太容易处理）
-1. $E^*(s) = \sum_{n=0}^{\infty} e(nT) \varepsilon^{-nTs}$ 包含无穷多个极点和零点，上一章也讲到，$E^*(s)$ 沿虚轴方向是周期的。因此，无法使用零极点分析的方法来分析系统的性质。
+1. $E^{\star}(s) = \sum_{n=0}^{\infty} e(nT) \varepsilon^{-nTs}$，在 starred transform 中存在非实数项 $\varepsilon^{-nTs}$，这一项往往在经过复杂运算后难以进行拉普拉斯反变换（可以通过时移性质来解决，但非实数项终究是不太容易处理）
+1. $E^{\star}(s) = \sum_{n=0}^{\infty} e(nT) \varepsilon^{-nTs}$ 包含无穷多个极点和零点，上一章也讲到，$E^{\star}(s)$ 沿虚轴方向是周期的。因此，无法使用零极点分析的方法来分析系统的性质。
 
 因此，我们需要一种更好的分析方法，来分析涉及信号采样与重构的系统。**可以采用 Z 变换**。
 
@@ -22,15 +22,15 @@ tags:
 * **starred transform 可以无痛转换到 Z transform**
   
   $$
-  E^*(s) = \sum_{n=0}^{\infty} e(nT) \varepsilon^{-nTs} \\
+  E^{\star}(s) = \sum_{n=0}^{\infty} e(nT) \varepsilon^{-nTs} \\
   \text{let} \quad z =  \varepsilon^{Ts} \\
-  E^*(z) = \sum_{n=0}^{\infty} e(nT) z^{-n}
+  E^{\star}(z) = \sum_{n=0}^{\infty} e(nT) z^{-n}
   $$
   
   很轻松的转换成了 z 的无穷级数，并且是 rational function of z 。
   
   $$
-  E(z) = E^*(s) \big|_{s = \frac{\ln z}{T}} \quad \text{or} \quad E^*(s) = E(z) \big|_{z = \varepsilon^{Ts}}
+  E(z) = E^{\star}(s) \big|_{s = \frac{\ln z}{T}} \quad \text{or} \quad E^{\star}(s) = E(z) \big|_{z = \varepsilon^{Ts}}
   $$
 
 * **Example**
@@ -90,7 +90,7 @@ tags:
   
   $$
   \begin{align}
-  &U(z) = E(z)D(z) \Leftrightarrow U^*(s) = E^*(s)D^*(s) \\
+  &U(z) = E(z)D(z) \Leftrightarrow U^*(s) = E^{\star}(s)D^*(s) \\
   &C(s) = G(s)U^*(s) \Rightarrow C^*(s) = G^*(s)U^*(s) \\
   \Rightarrow &C(z) = Z[G(s)]U(Z) = (1-z^{-1})Z[\frac{G_p(s)}{s}]E(z)D(z)
   \end{align}

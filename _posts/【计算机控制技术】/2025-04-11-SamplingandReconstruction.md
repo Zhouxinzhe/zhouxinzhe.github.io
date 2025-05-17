@@ -262,7 +262,7 @@ $$
 $$
 G_{h0}(j\omega) = \frac{2 \varepsilon^{-j(\omega T/2)}}{\omega} \left[ \frac{\varepsilon^{j(\omega T/2)} - \varepsilon^{-j(\omega T/2)}}{2j} \right] = T \frac{\sin(\omega T/2)}{\omega T/2} e^{-j(\omega T/2)} \\
 
-\text{幅值响应：}|G_{h0}(j\omega)| = T \left| \frac{\sin(\pi \omega / \omega_s)}{\pi \omega / \omega_s} \right| \\
+\text{幅值响应：}\vert G_{h0}(j\omega)\vert = T \left\vert \frac{\sin(\pi \omega / \omega_s)}{\pi \omega / \omega_s} \right\vert \\
 
 \text{相位响应：}\angle G_{h0}(j\omega) = -\frac{\pi \omega}{\omega_s} + \theta, 
 \quad \theta = \begin{cases} 
@@ -270,6 +270,7 @@ G_{h0}(j\omega) = \frac{2 \varepsilon^{-j(\omega T/2)}}{\omega} \left[ \frac{\va
 \pi, & \sin(\pi \omega / \omega_s) < 0 
 \end{cases}
 $$
+
 <img src="https://notes.sjtu.edu.cn/uploads/upload_840312976a4c878831263895ba467cff.png" style="zoom:67%;" />
 
 ### FOH 一阶保持器
@@ -297,7 +298,7 @@ $$
 同样，可以对 FOH 的频域特征（频域响应）进行分析：
 
 $$
-\text{幅值响应：}|G_{h1}(j\omega)| = T \sqrt{1 + \frac{4\pi^2 \omega^2}{\omega_s^2} \left[ \frac{\sin(\pi \omega / \omega_s)}{\pi \omega / \omega_s} \right]^2} \\
+\text{幅值响应：}\vert G_{h1}(j\omega)\vert = T \sqrt{1 + \frac{4\pi^2 \omega^2}{\omega_s^2} \left[ \frac{\sin(\pi \omega / \omega_s)}{\pi \omega / \omega_s} \right]^2} \\
 
 \text{相位响应：}\angle G_{h1}(j\omega) = \tan^{-1} \left( \frac{2\pi \omega}{\omega_s} \right) - \frac{2\pi \omega}{\omega_s}
 $$
