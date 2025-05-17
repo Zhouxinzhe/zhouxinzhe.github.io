@@ -95,6 +95,7 @@ $$
 $$
 \lim_{z\rightarrow 1} (z-1)Y(z) = \lim_{z\rightarrow 1} (z-1)R(z)G(z) = \lim_{z\rightarrow 1} z\mathbf{C}[z\mathbf{I} - \mathbf{A+BK}]^{-1}\mathbf{BN}
 $$
+
 因此可以通过设计 $\mathbf{N}$ 来保证系统的稳态增益。
 
 * 设计 $\mathbf{K}$ 来实现系统的稳定性（*主要关注点*）

@@ -33,7 +33,7 @@ Hey，我是周昕哲，一个习惯摆烂到最后再努力的普通交大学�
 
 #### 联系方式
 
-* 邮箱：zhou_xinzhe@sjtu.edu.cn
+* 邮箱：zhou_xinzhe@sjtu.edu.cn、zhouxinzhe0414@gmail.com
 * 微信：zxz1150146797
 
 总之，我就是这样一个普通的学生，努力学习，热爱生活，希望和大家一起进步。如果你也有类似的兴趣，欢迎来找我交流哦！
