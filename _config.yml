@@ -61,7 +61,7 @@ kramdown:
   syntax_highlighter: rouge
 
 # Disqus settings
-disqus_username: orchid
+disqus_username: false
 
 # Netease settings
 netease_comment: false
@@ -82,8 +82,8 @@ sidebar-wechat: zxz1150146797
 sidebar-email: zhou_xinzhe@sjtu.edu.cn
 
 # Featured Tags
-featured-tags: false # whether or not using Feature-Tags
-featured-condition-size: 1 # A tag will be featured if the size of it is more than this condition value
+featured-tags: true # whether or not using Feature-Tags
+featured-condition-size: 2 # A tag will be featured if the size of it is more than this condition value
 
 # Progressive Web Apps
 chrome-tab-theme-color: "#000000"
@@ -96,11 +96,5 @@ page-mathjax: false
 friends:
   [
     { title: "冉海银", href: "https://rhy2006.github.io/" },
-    # { title: "Ebn Zhang", href: "https://ebnbin.dev/" },
-    # { title: "Kun Qian", href: "http://kunq.me" },
-    # { title: "Sherry Woo", href: "https://sherrywoo.me/" },
-    # { title: "SmdCn", href: "http://blog.smdcn.net" },
-    # { title: "JiyinYiyong", href: "http://tiye.me/" },
-    # { title: "DHong Say", href: "http://dhong.co" },
-    # { title: "尹峰以为", href: "http://ingf.github.io/" },
+
   ]
