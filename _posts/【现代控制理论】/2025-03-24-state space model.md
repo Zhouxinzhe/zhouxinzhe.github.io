@@ -368,7 +368,6 @@ $$
 $$
 
 <img src="https://notes.sjtu.edu.cn/uploads/upload_d902f8ced44368d08ce49a75d221984d.jpg" style="zoom:50%;" />
-
 $$
 \dot{x} = \left[\begin{array}{ccc}
 p_1 & 0 & 0 \\
@@ -687,7 +686,7 @@ $$
 
 $$
 \dot{x}_1 = A_1x_1 + B_1u_1 = A_1x_1 - B_1C_2x_2 + B_1u \\
-\dot{x}_2 = A_2x_2 + B_2u_2 = A_5x_2 + B_2C_1x_1 \\
+\dot{x}_2 = A_2x_2 + B_2u_2 = A_2x_2 + B_2C_1x_1 \\
 y = y_1 = C_1x_1 \\
 $$
 
@@ -791,11 +790,11 @@ $$
 
 $$
 A = \begin{bmatrix}
-0 & 0 & 1 & 0 & \cdots & 0 & 0 \\
-0 & 0 & 0 & 1 & \cdots & 0 \\
-\vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
-0 & 0 & 0 & 0 & \cdots & 1 \\
--a_n & -a_{n-1} & -a_{n-2} & \cdots & \cdots & -a_1
+0 & 1 & 0 & \cdots & 0  \\
+0 & 0 & 1 & \cdots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & \cdots & 1 \\
+-a_0 & -a_{1} & -a_{2} & \cdots & -a_{n-1}
 \end{bmatrix}
 $$
 
