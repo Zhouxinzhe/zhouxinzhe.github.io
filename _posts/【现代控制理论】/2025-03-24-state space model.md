@@ -272,15 +272,19 @@ $$
 首先，看左边**第一部分**的传递函数：
 
 $$
+\begin{align}
 &\frac{z(s)}{u(s)} = \frac{1}{s^n + a_{n-1}s^{n-1} + \cdots + a_1s + a_0} \\
 \Rightarrow &z^{(n)} + a_{n-1}z^{(n-1)} + \cdots + a_1\dot{z} + a_0z = u
+\end{align}
 $$
 
 然后，看右边**第二部分**的传递函数：
 
 $$
+\begin{align}
 &\frac{y(s)}{z(s)} = \beta_{n-1}s^{n-1} + \cdots + \beta_1s + \beta_0 \\
 \Rightarrow &y = \beta_{n-1}z^{(n-1)} + \cdots + \beta_1\dot{z} + \beta_0z
+\end{align}
 $$
 
 因此可以如下选择状态量，并建立方程：

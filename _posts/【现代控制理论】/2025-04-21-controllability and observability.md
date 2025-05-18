@@ -228,7 +228,7 @@ $$
 同样，可以仿照能控性的定理，继续给出**能观性的等价定理**：
 
 * **定理 2：系统 $(A,C)$ 是可观的，当且仅当矩阵 $G_o = \begin{bmatrix} C \\ CA \\ \vdots \\ CA^{n-1} \end{bmatrix}$ 是列满秩的**
-* **定理 3：系统 $(A,C)$ 是可观的，当且仅当对于 $A$ 的任意特征值 $\lambda$， $rank \begin{bmatrix} \lambda I -A \\ C \end{bmatrix} = n$ **
+* **定理 3：系统 $(A,C)$ 是可观的，当且仅当对于 $A$ 的任意特征值 $\lambda$， $rank \begin{bmatrix} \lambda I -A \\ C \end{bmatrix} = n$**
 
 同样的，上述三个定理在说明了系统能观性的同时，也给出了一种估计系统初始状态量的方法 $x_0 = W_o^{-1}(t_1) \int_{0}^{t_1} e^{A^Tt} C^T y(t)\mathrm{d}t$，同样的这是一种**开环估计器**，即根据已有信息一次性估计出来的，同样因为涉及积分，是一种参数敏感且复杂的状态估计器。
 
@@ -260,17 +260,21 @@ $$
   \end{cases}
   $$
   
-  其中，$\widetilde{A} = P^{-1} A P = \begin{bmatrix} \widetilde{A}_{11} & \widetilde{A}_{12} \\ \hdashline 0 & \widetilde{A}_{22} \end{bmatrix}$，$\widetilde{B} = P^{-1} B = \begin{bmatrix} \widetilde{B}_1 \\ \hdashline 0 \end{bmatrix}$，$\widetilde{C} = C P = \begin{bmatrix} \widetilde{C}_1 & \widetilde{C}_2 \end{bmatrix}$
-
+  其中
+  
+  $$
+  \widetilde{A} = P^{-1} A P = \begin{bmatrix} \widetilde{A}_{11} & \widetilde{A}_{12} \\ \hdashline 0 & \widetilde{A}_{22} \end{bmatrix},\quad\widetilde{B} = P^{-1} B = \begin{bmatrix} \widetilde{B}_1 \\ \hdashline 0 \end{bmatrix},\quad\widetilde{C} = C P = \begin{bmatrix} \widetilde{C}_1 & \widetilde{C}_2 \end{bmatrix}
+  $$
+  
   此时，系统的前 $n_1$ 维构成了能控的子系统，后 $n-n_1$ 维为不能控系统：
   
   $$
   \dot{\tilde{x}}_1 = \widetilde{A}_{11}\,\tilde{x}_1 + \widetilde{A}_{12}\,\tilde{x}_2 + \widetilde{B}_1 u \\
   \dot{\tilde{x}}_2 = \widetilde{A}_{22}\,\tilde{x}_2
   $$
-  
-  <img src="https://notes.sjtu.edu.cn/uploads/upload_28d7a7420acf2cda0106b92a3296d4ea.png" style="zoom:67%;" />
 
+  <img src="https://notes.sjtu.edu.cn/uploads/upload_28d7a7420acf2cda0106b92a3296d4ea.png" style="zoom:67%;" />
+  
 * **变换矩阵 $P$ 的构造方式：**
   1. 在能控性矩阵 $G_c = [B \ AB \ A^2B \ \cdots \ A^{n-1}B]$ 中选择 $n_1$ 个线性无关的列向量
   2. 将所得的列向量作为矩阵 $P$ 的前 $n_1$ 列，其余列可以在保证 $P$ 可逆的前提下任意选择
@@ -310,8 +314,12 @@ $$
   \end{cases}
   $$
   
-  其中，$\widetilde{A} = P^{-1} A P = \begin{bmatrix} \widetilde{A}_{11} & 0 \\ \hdashline \widetilde{A}_{21} & \widetilde{A}_{22} \end{bmatrix}$，$\widetilde{B} = P^{-1} B = \begin{bmatrix} \widetilde{B}_1 \\ \hdashline \widetilde{B}_2 \end{bmatrix}$，$\widetilde{C} = C P = \begin{bmatrix} \widetilde{C}_1 & 0 \end{bmatrix}$
-
+  其中
+  
+  $$
+  \widetilde{A} = P^{-1} A P = \begin{bmatrix} \widetilde{A}_{11} & 0 \\ \hdashline \widetilde{A}_{21} & \widetilde{A}_{22} \end{bmatrix},\quad\widetilde{B} = P^{-1} B = \begin{bmatrix} \widetilde{B}_1 \\ \hdashline \widetilde{B}_2 \end{bmatrix},\quad\widetilde{C} = C P = \begin{bmatrix} \widetilde{C}_1 & 0 \end{bmatrix}
+  $$
+  
   此时，系统的前 $n_1$ 维构成了能观的子系统，后 $n-n_1$ 维为不能观系统：
   
   $$
@@ -319,7 +327,7 @@ $$
   $$
   
   <img src="https://notes.sjtu.edu.cn/uploads/upload_3d7efe3b41c074bf860e830c2f8fafda.png" style="zoom:67%;" />
-
+  
 * **变换矩阵 $P$ 的构造方式：**
 
   1. 在能控性矩阵  $G_o = \begin{bmatrix} C \\ CA \\ \vdots \\ CA^{n-1} \end{bmatrix}$ 中选择 $n_1$ 个线性无关的行向量
