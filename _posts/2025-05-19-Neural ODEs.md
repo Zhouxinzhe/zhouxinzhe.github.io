@@ -164,11 +164,7 @@ $$
   \end{align}
   $$
   
-  因此，从 $t = t_{N}$ 出发可以得到任意时刻的 $\mathbf{a}_{\text{aug}}(t)$。
-  
-  并且 $\mathbf{a}_{\text{aug}}(t)$ 的更新需要 $\mathbf{z}(t)$ 和 $\mathbf{a}(t)$ 的辅助。
-  
-  最终得到我们的目标 $\frac{\partial L}{\partial \theta(t_0)}$。
+  因此，从 $t = t_{N}$ 出发可以得到任意时刻的 $\mathbf{a}_{\text{aug}}(t)$。并且 $\mathbf{a}_{\text{aug}}(t)$ 的更新需要 $\mathbf{z}(t)$ 和 $\mathbf{a}(t)$ 的辅助。最终得到我们的目标 $\frac{\partial L}{\partial \theta(t_0)}$。
 
 
 
@@ -182,8 +178,8 @@ $$
 
   1. 有 $\mathbf{z}(t_N)$ 观测，同时能够得到  $\mathbf{a}(t_N) = \frac{dL}{dz(t_N)}$、$\mathbf{a}_t(t_N) = \frac{dL}{dz(t_N)}f(z(t_N),t_N)$，**令 $\mathbf{a}_{\theta}(t_N) = 0$**。
 
-  2. 根据 $(9)$ 式迭代计算，可以得到 $\mathbf{a}_{\theta}(t_{N-1})$
-  3. $\frac{\partial L}{\partial \theta} = \frac{\partial L}{\partial \theta} + \mathbf{a}_{\theta}(t_{N-1})$
+  2. 根据 $(9)$ 式迭代计算，可以得到 $\mathbf{a}_\theta(t_{N-1})$
+  3. $\frac{\partial L}{\partial \theta} = \frac{\partial L}{\partial \theta} + \mathbf{a}_\theta(t_{N-1})$
 
 * 考虑时间段 $t \in (t_{N-2}, t_{N-1}]$
 
