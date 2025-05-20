@@ -88,7 +88,7 @@ $$
    \begin{align}
    e^{At} &= e^{P\bar{A}P^{-1} t} \\
    &= I + (P\bar{A}P^{-1})t + \frac{1}{2!}(P\bar{A}P^{-1})^2 t^2 + \cdots + \frac{1}{n!}(P\bar{A}P^{-1})^n t^n + \cdots \\
-   &= T^{-1}IT + P\bar{A}P^{-1} t + \frac{1}{2!}P\bar{A}^2P^{-1} t^2 + \cdots + \frac{1}{n!}P\bar{A}^nP^{-1} t^n + \cdots \\
+   &= P^{-1}IP + P\bar{A}P^{-1} t + \frac{1}{2!}P\bar{A}^2P^{-1} t^2 + \cdots + \frac{1}{n!}P\bar{A}^nP^{-1} t^n + \cdots \\
    &= P \left( I + \bar{A}t + \frac{1}{2!} \bar{A}^2 t^2 + \cdots + \frac{1}{n!} \bar{A}^n t^n + \cdots \right) P^{-1} \\
    &= P e^{\bar{A}t} P^{-1} \\
    &= P \begin{bmatrix}
@@ -249,7 +249,7 @@ $$
 
 可以看到在系统响应表达式中，有一个非常重要的项，$e^{At}$。围绕着一项，可以对系统响应做新的解释：系统的输入包括系统初始时刻的状态 $x(0)$ 以及连续输入的每一时刻的 $u(t)$，而 $e^{At}$ 的作用就是将输入作用到 $x(t)$；比如 $x(0)$ 的作用时间是 $t$ ，所以是 $e^{At}x(0)$，而 $\tau$ 时刻输入的 $u(\tau)$ 其作用时间为 $t-\tau$，所以是 $e^{A(t-\tau)} Bu(\tau)$。将所有输入对最后状态的作用求和（积分），即可求得最终状态 $x(t)$。
 
-因此，$e^{At}$ 的作用就是将某一时刻的系统输入转移到最终的系统状态上，我们将其命名为**状态转移矩阵**（State Transition Matrix）。我们将在下一章对这一重要概念进行进一步讨论。
+因此，**$e^{At}$ 的作用就是将某一时刻的系统输入转移到最终的系统状态上**，我们将其命名为**状态转移矩阵**（State Transition Matrix）。我们将在下一节对这一重要概念进行进一步讨论。
 
 
 
@@ -316,11 +316,10 @@ $$
 如何求解其系统状态呢？第一反应是和定常系统一样求解：
 
 $$
-\frac{\mathrm{d}x(t)}{\mathrm{d}t} = a(t)x(t) \Rightarrow \frac{1}{x(t)} \mathrm{d}x(t) = a(t) \mathrm{d}t \Rightarrow x(t) = e^{\int_{t_0}^{t} a(\tau) \mathrm{d}\tau} x_0
+\frac{\mathrm{d}x(t)}{\mathrm{d}t} = A(t)x(t) \Rightarrow \frac{1}{x(t)} \mathrm{d}x(t) = A(t) \mathrm{d}t \Rightarrow x(t) = e^{\int_{t_0}^{t} A(\tau) \mathrm{d}\tau} x_0
 $$
 
 **但这样正确吗？**我们将求解的结果回代回系统的状态表达式中：
-
 $$
 e^{\int_{t_0}^{t} A(\tau) \mathrm{d}\tau} = I + \int_{t_0}^{t} A(\tau) \mathrm{d}\tau + \frac{1}{2!} \left[ \int_{t_0}^{t} A(\tau) \mathrm{d}\tau \right]^2 + \cdots \\
 \frac{\mathrm{d}}{\mathrm{d}t} e^{\int_{t_0}^{t} A(\tau) \mathrm{d}\tau} = A(t) + \int_{t_0}^{t} A(\tau) \mathrm{d}\tau A(t) + \frac{1}{2} \left[ \int_{t_0}^{t} A(\tau) \mathrm{d}\tau \right]^2 A(t) + \cdots \\
@@ -360,7 +359,7 @@ y(t) = Cx(t) + Du(t)
 \end{cases}
 $$
 
-对于**状态量**而言，假设**等间隔 $T$ 采样**，采样信号为：
+* 对于**状态量**而言，假设**等间隔 $T$ 采样**，采样信号为：
 
 $$
 x^*(t) := \begin{cases} 

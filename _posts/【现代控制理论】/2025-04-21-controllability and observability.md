@@ -52,15 +52,15 @@ OK，我们已经学会了**建立系统、分析系统**，紧接着是不是�
   System $(A, B)$ is said to be **controllable** if for any initial state $x(0) = x_0$ and any final state $x_1$, there exists a input that drives $x_0$ to $x_1$ in a finite time. 
   
   $$
-  \forall x_0, x_1 \in \mathbb{R}^n , \ \exists T > 0,  \ \exists u(t), \ t \in [0, T], \text{ such that }\\
-  x_1 = e^{AT} x_0 + \int_{0}^{T} e^{A(T-\tau)} B u(\tau) \mathrm{d}\tau
+  \forall x_0, x_1 \in \mathbb{R}^n , \ \exists t_1 > 0,  \ \exists u(t), \ t \in [0, t_1], \text{ such that }\\
+  x_1 = e^{At_1} x_0 + \int_{0}^{t_1} e^{A(t_1-\tau)} B u(\tau) \mathrm{d}\tau
   $$
 
-那么如何使得能控性定义中的等式成立呢？前人提出了一个非常 fancy 的想法：
+那么如何使得能控性定义中的等式成立呢？前人提出了一个非常巧妙的想法：
 
 $$
 \text{let } u(t) = -B^T e^{A^T(t_1 - t)} W_c^{-1}(t_1) \left( e^{At_1} x_0 - x_1 \right), \\
-\text{where } W_c(t) = \int_{0}^{t} e^{A\tau} BB^T e^{A^T \tau} \mathrm{d}\tau = \tau = \int_{0}^{t} e^{A(t-\tau)} BB^T e^{A^T (t-\tau)} \mathrm{d}\tau.
+\text{where } W_c(t) = \int_{0}^{t} e^{A\tau} BB^T e^{A^T \tau} \mathrm{d}\tau  = \int_{0}^{t} e^{A(t-\tau)} BB^T e^{A^T (t-\tau)} \mathrm{d}\tau.
 $$
 
 这样是不是就实现了，系统的能控性呢？注意，**需要考虑 $W_c(t)$ 的可逆性**！（$W_c(t)$ 为**能控格拉姆矩阵**）
@@ -194,7 +194,7 @@ $$
 
 
 
-那么，如何使得系统可观测呢？参考能控性的 fancy 想法（构造一个可逆方阵），这里同样可以提供一个非常 fancy 的 idea：
+那么，如何使得系统可观测呢？参考能控性的巧妙想法（构造一个可逆方阵），这里同样可以提供一个非常巧妙的 idea：
 
 $$
 \text{let } W_o(t) =  \int_{0}^{t} e^{A^T\tau} C^TC e^{A\tau} \mathrm{d}\tau \\
