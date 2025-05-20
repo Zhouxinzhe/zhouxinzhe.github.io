@@ -1,7 +1,6 @@
 ---
 layout:       post
 title:        "Neural ODEs"
-subtitle:     "Start from here"
 author:       "Orchid"
 header-style: text
 catalog:      true
@@ -165,7 +164,7 @@ $$
   \end{align}
   $$
   
-  因此，从 $t=t_N$ 出发可以得到任意时刻的 $\mathbf{a}_{aug}(t)$。并且 $\mathbf{a}_{aug}(t)$ 的更新需要 $\mathbf{z}(t)$ 和 $\mathbf{a}(t)$ 的辅助。最终就能求解我们的目标 $\frac{\partial L}{\partial \theta(t_0)}$
+  因此，从 $t = t_{N}$ 出发可以得到任意时刻的 $\mathbf{a}_{\text{aug}}(t)$。并且 $\mathbf{a}_{\text{aug}}(t)$ 的更新需要 $\mathbf{z}(t)$ 和 $\mathbf{a}(t)$ 的辅助。最终得到我们的目标 $\frac{\partial L}{\partial \theta(t_0)}$。
 
 
 
