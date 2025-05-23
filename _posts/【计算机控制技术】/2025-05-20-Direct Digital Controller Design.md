@@ -136,6 +136,7 @@ $$
     3. 使用 convex optimization method   
 
 * 考虑特殊输入：阶跃输入；考虑特殊目标：零稳态误差（保证系统稳定的前提）
+    
     $$
     e(\infty) = \lim_{z \to 1} (z - 1) E(z) = \frac{1}{1 + \lim_{z \to 1} D(z) G(z)}
     $$
@@ -153,6 +154,7 @@ $$
     $$
 
     * $m = 1$
+      
       $$
        D(z) = \frac{a_0 + a_1 z^{-1}}{1 - z^{-1}} = -a_1 + (a_0 + a_1) \frac{z}{z - 1}  \\
        \implies u(k) = u(k-1) + a_0 e(k) + a_1 e(k-1) \\
@@ -160,6 +162,7 @@ $$
       $$
 
     * $m = 2$
+      
       $$
       D(z) = \frac{a_0 + a_1 z^{-1} + a_2 z^{-2}}{1 - z^{-1}} = -(a_1 + 2a_2) + (a_0 + a_1 + a_2) \frac{z}{z - 1} + a_2 \frac{z - 1}{z} \\
       \implies u(k) = u(k-1) + a_0 e(k) + a_1 e(k-1) + a_2 e(k-2) \\
@@ -173,6 +176,7 @@ $$
 上一节是从数字控制器的输入与输出的时域关系出发，进而得到数字控制器的表达式。这一节将从系统闭环传递函数的全局视角出发，反推得到期望的数字控制器。接下来将从两点进行解释：一，在得到期望的闭环传递函数后，如何反推相应的数字控制器；二，如何得到或者说如何选择期望的闭环传递函数。（逻辑上是先“二”后“一”，但是这里“二”是主体，所有放后面讲）
 
 * **如何反推相应的数字控制器**
+  
   $$
   G_{cl}(z) = \frac{C(z)}{R(z)} = \frac{D(z)G(z)}{1 + D(z)G(z)} \\
   \implies D(z) = \frac{1}{G(z)} \frac{G_{cl}(z)}{1 - G_{cl}(z)}
@@ -193,6 +197,7 @@ $$
 * **unit-step input 阶跃输入**
 
   * Problem
+    
     $$
     \text{Given } r(k) = 1, \forall k \geq 0, \text{ find } G_{cl}(z) \text{ such that } c(k) = 1, \forall k \geq N \text{ for some } N \geq 0
     $$
@@ -223,11 +228,15 @@ $$
 * **unit-ramp  input 斜坡输入**
 
   * Problem
+    
     $$
     \text{Given } r(k) = kT, \forall k \geq 0, \text{ find } G_{cl}(z) \text{ such that } c(k) = kT, \forall k \geq N \text{ for some } N \geq 0
     $$
 
-  * 根据要求可以列出系统的输入和响应：
+  * Answer
+    
+    根据要求可以列出系统的输入和响应：
+    
     $$
     \begin{align}
     &C(z) = c_0 + c_1 z^{-1} \cdots + c_{N-1} z^{-N+1} + \sum_{k=N}^{\infty} kT z^{-k}\\
@@ -400,7 +409,7 @@ $$
 
 
 
-* **Intersample ripple  **
+* **Intersample ripple**
 
   什么是采样间波纹呢？首先，我必须重新再提一嘴，我们真正考虑的系统是计算机的 **Sampled Data System**，而为了更简便的考虑，我们才将其转换为了 z 域下的离散时间系统。而采样信号系统的输出实际上是连续信号 $C(s)$，而我们简化后的离散时间系统的输出实际上是对 $C(s)$ 的采样得到的 $C(z)$。
   
@@ -443,31 +452,37 @@ $$
 * **总结**
 
   * Deat-Beat Design 的基本点——所有极点在零点：
+    
     $$
     G_{cl}(z) =  c_0 + c_1 z^{-1} + c_2 z^{-2} + \cdots + c_N z^{-N}
     $$
 
   * 考虑物理可实现性（往往包含时延项）：
+    
     $$
     G_{cl}(z) =  c_1 z^{-1} + c_2 z^{-2} + \cdots + c_N z^{-N}
     $$
 
   * 考虑三种特定输入的零稳态误差：
+    
     $$
     1 - G_{cl}(z) = (1 - z^{-1})^q F(z)
     $$
 
   * 考虑数字控制器输出稳定 Stability，$G_{cl}(z)$ 包含 $G(z)$ 非最小项零点：
+    
     $$
     G_{cl}(z) = (1 - z_1 z^{-1}) \cdots (1 - z_v z^{-1}) G'_{cl}(z)
     $$
 
   * 考虑 Model Mismatch，$1 - G_{cl}(z)$ 包含 $G(z)$ 在单位圆上或外的极点：
+    
     $$
     1 - G_{cl}(z) = (1 - p_1^+ z^{-1}) \ldots (1 - p_v^+ z^{-1})(1 - z^{-1})^q F(z)
     $$
 
   * 考虑消除 intersample ripple，$G_{cl}(z)$ 包含 $G(z)$ 所有零点：
+    
     $$
     G_{cl}(z) = (1 - z_1 z^{-1}) \cdots (1 - z_v z^{-1})\cdots (1 - z_w z^{-1}) G'_{cl}(z)
     $$
