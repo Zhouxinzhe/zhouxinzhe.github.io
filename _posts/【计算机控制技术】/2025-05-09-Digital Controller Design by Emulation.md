@@ -1,6 +1,6 @@
 ---
 layout:       post
-title:        "【计算机控制技术】- Digital Controller Design "
+title:        "【计算机控制技术】- Digital Controller Design by Emulation"
 author:       "Orchid"
 header-style: text
 catalog:      true
@@ -234,7 +234,7 @@ $$
 
 ## Discretizing  State-variable Models
 
-本文在此之前，对于系统的建模都是经典的系统框图，因此对于数字控制器的设计也都是基于经典的自动控制原理。同样，我们可以从现代控制理论的角度进行系统建模，也就是建立状态空间模型。在经典控制理论中，我们设计数字控制器，实际上是设计控制器在 z 域的表达式；在状态空间模型中，我们设计数字控制器，实际上就是**设计离散状态模型中的各个矩阵**，即
+本文在此之前，对于系统的建模都是经典的系统框图，因此对于数字控制器的设计也都是基于经典的自动控制原理。同样，我们可以从现代控制理论的角度进行系统建模，也就是建立状态空间模型。现代控制理论研究的是连续时间系统下的状态模型，因此想要设计离散状态空间模型中的控制器，首先需要得到离散的状态空间模型：
 
 $$
 \begin{aligned}
@@ -243,11 +243,7 @@ $$
 \end{aligned}
 $$
 
-中的 $A,B,C,D$ 四个参数。（这里的状态空间模型很奇怪，是从ppt上抄下来的）
-
-
-
-同样，我们遵循一开始的思路，**将 Analog Controller 离散化成 Digital Controller**，想办法将连续的状态空间模型尽可能保持性质的离散化即可：
+同样，我们遵循一开始的思路，**将 Analog Controller 离散化成 Digital Controller**，想办法将连续的状态空间模型尽可能保持性质的离散化成离散的状态空间模型即可：
 
 $$
 \begin{aligned}
