@@ -136,7 +136,7 @@ $$
     3. 使用 convex optimization method   
 
 * 考虑特殊输入：阶跃输入；考虑特殊目标：零稳态误差（保证系统稳定的前提）
-    
+  
     $$
     e(\infty) = \lim_{z \to 1} (z - 1) E(z) = \frac{1}{1 + \lim_{z \to 1} D(z) G(z)}
     $$
@@ -457,7 +457,7 @@ $$
     G_{cl}(z) =  c_0 + c_1 z^{-1} + c_2 z^{-2} + \cdots + c_N z^{-N}
     $$
 
-  * 考虑物理可实现性（往往包含时延项）：
+  * 考虑物理可实现性（具体还是得看 $G(z)$ 中有没有延时项，有几项延时项，下式是假设有一项延时）：
     
     $$
     G_{cl}(z) =  c_1 z^{-1} + c_2 z^{-2} + \cdots + c_N z^{-N}
@@ -466,21 +466,23 @@ $$
   * 考虑三种特定输入的零稳态误差：
     
     $$
-    1 - G_{cl}(z) = (1 - z^{-1})^q F(z)
+    1 - G_{cl}(z) = (1 - z^{-1})^q F(z) \\
+    F(z) = f_0 + f_1z^{-1} + \cdots + f_pz^{-p}, \quad \text{if G(z) contains } z^{-1} \text{, } f_0 = 1
     $$
-
+    
   * 考虑数字控制器输出稳定 Stability，$G_{cl}(z)$ 包含 $G(z)$ 非最小项零点：
     
     $$
     G_{cl}(z) = (1 - z_1 z^{-1}) \cdots (1 - z_v z^{-1}) G'_{cl}(z)
     $$
-
+  
   * 考虑 Model Mismatch，$1 - G_{cl}(z)$ 包含 $G(z)$ 在单位圆上或外的极点：
     
     $$
     1 - G_{cl}(z) = (1 - p_1^+ z^{-1}) \ldots (1 - p_v^+ z^{-1})(1 - z^{-1})^q F(z)
     $$
-
+    需要注意的是，Model Mismatch 和零稳态误差是两个可以同时实现的目标。什么意思呢？如果 $G(z)$ 有 $k$ 个极点在 $z = 1$ 处，那么，$1 - G_{cl}(z)$ 中只需要含有 $max\{k, q\}$ 个 $(1 - z^{-1})$ ，即可同时满足 Model Mismatch 和零稳态误差的要求。
+    
   * 考虑消除 intersample ripple，$G_{cl}(z)$ 包含 $G(z)$ 所有零点：
     
     $$
@@ -490,13 +492,140 @@ $$
 
 
 
+#### Dahlin’s Method
+
+Dahlin’s method 主要针对的 Plant 类型是 first-order–plustime-delay (**FOPTD**) model：
+
+$$
+\begin{align}
+\text{时域：}&\quad \tau \frac{dy(t)}{dt} + y(t) = K u(t - \theta)\\
+\text{频域：}&\quad G_p(s) = \frac{K e^{-\theta s}}{\tau s + 1}
+\end{align}
+$$
+
+假设时延 $\theta$ 是采样周期 $T$ 的整数倍，即 $\theta = NT$。期望的闭环传递函数如下：
+
+$$
+G_{cl}(z) = \frac{(1 - e^{-T/\tau_r})z^{-N-1}}{1 - e^{-T/\tau_r}z^{-1}}
+$$
+
+其中，$\tau_r$ 是期望的闭环传递函数时间常数，人为设定。可以看到，$\tau_r$ 选择的越小，闭环传递函数的极点越靠近零点，系统的响应越快。当 $\tau_r$ 选择最小值 0 时，$G_{cl}(z) = z^{-N-1}$ 等价于 Dead-Beat Design 中的 minimal prototype controller（过于激进的选择）。
+
+此时，反推得到的数字控制器表达式如下：
+
+$$
+D(z) = \frac{1}{G(z)} \frac{(1 - e^{-T/\tau_r})z^{-N-1}}{1 - e^{-T/\tau_r}z^{-1} - (1 - e^{-T/\tau_r})z^{-N-1}}
+$$
+
+接下来看一个例子，来对比 Dead-Beat Design 和 Dahlin’s method：
+
+* 考虑以下 Plant：
+  
+  $$
+  G_p(s) = \frac{1}{s^2+s+1}
+  $$
+  
+  假设采样周期 $T = 0.3s$，考虑 unit-step input。
+
+  * discrete the plant：
+    
+    $$
+    G(z) = \frac{0.04052(z + 0.9045)}{(z - 0.8318 - j0.221)(z - 0.8318 + j0.221)} = \frac{0.04052z^{-1} + 0.03665z^{-2}}{1 - 1.664z^{-1} + 0.7408z^{-2}}
+    $$
+
+
+  * minimal prototype controller（Dead-Beat Design）
+    
+    $$
+    G_{cl} = z^{-1} \\
+    D(z) = \frac{1}{G(z)} \frac{z^{-1}}{1-z^{-1}} = \frac{(1 - 1.664z^{-1} + 0.7408z^{-2})}{(1-z^{-1})(0.04052 + 0.03665z^{-1})}
+    $$
+    
+    <img src="https://notes.sjtu.edu.cn/uploads/upload_75687af6dcb6c82e4a4fe15d68e25909.png" style="zoom: 67%;" />
+
+  * Dahlin controller（$\tau_r$ 选择为 0.3）
+    
+    $$
+    G_{cl}(z) = \frac{0.632z^{-1}}{1-0.368z^{-1}} \\
+    D(z) = \frac{1}{G(z)} \frac{0.632z^{-1}}{1-z^{-1}} = \frac{0.632(1 - 1.664z^{-1} + 0.7408z^{-2})}{(1-z^{-1})(0.04052 + 0.03665z^{-1})}
+    $$
+    
+    <img src="https://notes.sjtu.edu.cn/uploads/upload_75ec652fbe55f95bbf5ba6b771b28dc0.png" style="zoom:67%;" />
+
+  可以看到两种方法下，控制器的输出都会在零值上下震荡（ringing）。这是我们所不期望的，因为产生纹波（intersample ripple）。而震荡的原因在于 $D(z)$ 包含震荡的极点，即 $(0.04052 + 0.03665z^{-1}) \implies z = -0.9045$。**Dahlin 提出了一种方法来消除 ringing，将产生震荡的项中的 $z^{-1}$ 用 1 来替代**：
+
+  * 修正版 Dahlin controller
+    
+    $$
+    D'(z) = \frac{0.632(1 - 1.664z^{-1} + 0.7408z^{-2})}{(1-z^{-1})(0.04052 + 0.03665)} \\
+    G_{cl}(z) = \frac{D'(z)G(z)}{1+D'(z)G(z)}
+    $$
+    
+    <img src="https://notes.sjtu.edu.cn/uploads/upload_3bd3a38818666a83d0c93e4ea60a43eb.png" style="zoom: 50%;" />
 
 
 
+#### Vogel-Edgar Algorithm  
+
+Vogel 和 Edgar 用另一种方式来修正 Dahlin controller 来消除 ringing。考虑以下离散 Plant：
+
+$$
+G(z) = \frac{z^{-N} a_0 + a_1 z^{-1} + \cdots + a_m z^{-m}}{b_0 + b_1 z^{-1} + \cdots + b_n z^{-n}} \triangleq z^{-N} \frac{N_G(z^{-1})}{M_G(z^{-1})}
+$$
+
+其中，$N_G(z^{-1})$ 为分子项，$M_G(z^{-1})$ 为分母项。修正后的期望闭环传递函数如下：
+
+$$
+G_{cl}(z) = \frac{(1 - e^{-T/\tau_r})}{{1 - e^{-T/\tau_r}z^{-1}}} \frac{N_G(z^{-1})}{N_G(1)} z^{-N-1}
+$$
+
+其中，$N_G(1)$ 就是将分子项中的 $z^{-1}$ 用 1 来代入得到的数。此时反推得到的数字控制器如下：
+
+$$
+D(z) = \frac{1}{G(z)} \frac{G_{cl}(z)}{1 - G_{cl}(z)} = \frac{(1 - e^{-T/\tau_r})M_G(z^{-1})z^{-N-1}}{(1 - e^{-T/\tau_r}z^{-1})N_G(1) - (1 - e^{-T/\tau_r})N_G(z^{-1})z^{-N-1}}
+$$
 
 
+#### Internal Model Control
 
+这一块和过程控制系统中的内模控制是一致的。
 
+<img src="https://notes.sjtu.edu.cn/uploads/upload_9985c77ef1fd21d42d13903275a539ec.png" style="zoom:80%;" />
 
+1. 将 Plant 进行拆分
+   
+   $$
+   \tilde G(z) = \tilde G_+(z) \tilde G_-(z)
+   $$
+   
+   将 Plant 拆分成两部分，其中 $\tilde G_+(z)$  包含所有的时延项 $z^{-1}$、包含所有落在单位圆上或外的零点、包含落在 $(-1,0)$ 上的零点，同时要配一个系数使得 $\tilde G_+(1) = 1$。拆出来的另一部分就是 $\tilde G_-(z)$
 
+2. 加上滤波器
+   
+   $$
+   D(z) = \frac{F(z)}{\tilde G_-(z)}
+   $$
+   
+   其中，$F(z)$ 一般可以取 $\frac{1 - \alpha}{1 - \alpha z^{-1}}, \frac{(1 - \alpha)z^{-1}}{1 - \alpha z^{-1}}$。
 
+* Example
+  
+  $$
+  G(z) = \frac{-0.006434 - 0.00621z^{-1}}{1 - 1.896z^{-1} + 0.8988z^{-2}}z^{-21}
+  $$
+
+  1. 将 Plant 进行拆分
+     
+     $$
+     \begin{align}
+     \tilde G_+(z) &= \frac{-0.006434 - 0.00621z^{-1}}{-0.006434 - 0.00621} z^{-21} \\
+     \tilde G_-(z) &= \frac{-0.006434 - 0.00621}{1 - 1.896z^{-1} + 0.8988z^{-2}}
+     \end{align}
+     $$
+
+  2. 加上滤波器，这里选择 $F(z) = 1$
+     
+     $$
+     D(z) = \frac{1}{\tilde G_-(z)} = \frac{1 - 1.896z^{-1} + 0.8988z^{-2}}{-0.12644}
+     $$
+     
