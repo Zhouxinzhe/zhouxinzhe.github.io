@@ -506,7 +506,7 @@ $$
 假设时延 $\theta$ 是采样周期 $T$ 的整数倍，即 $\theta = NT$。期望的闭环传递函数如下：
 
 $$
-G_{cl}(z) = \frac{(1 - e^{-T/\tau_r})z^{-N-1}}{1 - e^{-T/\tau_r}z^{-1}}
+G_{cl}(z) = \frac{(1 - e^{-\frac{T}{\tau_r}})z^{-N-1}}{1 - e^{-\frac{T}{\tau_r}}z^{-1}}
 $$
 
 其中，$\tau_r$ 是期望的闭环传递函数时间常数，人为设定。可以看到，$\tau_r$ 选择的越小，闭环传递函数的极点越靠近零点，系统的响应越快。当 $\tau_r$ 选择最小值 0 时，$G_{cl}(z) = z^{-N-1}$ 等价于 Dead-Beat Design 中的 minimal prototype controller（过于激进的选择）。
@@ -514,7 +514,7 @@ $$
 此时，反推得到的数字控制器表达式如下：
 
 $$
-D(z) = \frac{1}{G(z)} \frac{(1 - e^{-T/\tau_r})z^{-N-1}}{1 - e^{-T/\tau_r}z^{-1} - (1 - e^{-T/\tau_r})z^{-N-1}}
+D(z) = \frac{1}{G(z)} \frac{(1 - e^{-\frac{T}{\tau_r}})z^{-N-1}}{1 - e^{-\frac{T}{\tau_r}}z^{-1} - (1 - e^{-\frac{T}{\tau_r}})z^{-N-1}}
 $$
 
 接下来看一个例子，来对比 Dead-Beat Design 和 Dahlin’s method：
@@ -576,13 +576,13 @@ $$
 其中，$N_G(z^{-1})$ 为分子项，$M_G(z^{-1})$ 为分母项。修正后的期望闭环传递函数如下：
 
 $$
-G_{cl}(z) = \frac{(1 - e^{-T/\tau_r})}{{1 - e^{-T/\tau_r}z^{-1}}} \frac{N_G(z^{-1})}{N_G(1)} z^{-N-1}
+G_{cl}(z) = \frac{(1 - e^{-\frac{T}{\tau_r}})}{{1 - e^{-\frac{T}{\tau_r}}z^{-1}}} \frac{N_G(z^{-1})}{N_G(1)} z^{-N-1}
 $$
 
 其中，$N_G(1)$ 就是将分子项中的 $z^{-1}$ 用 1 来代入得到的数。此时反推得到的数字控制器如下：
 
 $$
-D(z) = \frac{1}{G(z)} \frac{G_{cl}(z)}{1 - G_{cl}(z)} = \frac{(1 - e^{-T/\tau_r})M_G(z^{-1})z^{-N-1}}{(1 - e^{-T/\tau_r}z^{-1})N_G(1) - (1 - e^{-T/\tau_r})N_G(z^{-1})z^{-N-1}}
+D(z) = \frac{1}{G(z)} \frac{G_{cl}(z)}{1 - G_{cl}(z)} = \frac{(1 - e^{-\frac{T}{\tau_r}})M_G(z^{-1})z^{-N-1}}{(1 - e^{-\frac{T}{\tau_r}}z^{-1})N_G(1) - (1 - e^{-\frac{T}{\tau_r}})N_G(z^{-1})z^{-N-1}}
 $$
 
 
