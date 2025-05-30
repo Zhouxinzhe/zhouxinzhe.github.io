@@ -368,6 +368,7 @@ $$
 $$
 
 <img src="https://notes.sjtu.edu.cn/uploads/upload_d902f8ced44368d08ce49a75d221984d.jpg" style="zoom:50%;" />
+
 $$
 \dot{x} = \left[\begin{array}{ccc}
 p_1 & 0 & 0 \\
@@ -378,7 +379,6 @@ b_1 \\
 0 \\
 0
 \end{array}\right] u\\
-
 y = \left[\begin{array}{ccc}
 1 & p_2 - z_2 & p_3 - z_3
 \end{array}\right] x
