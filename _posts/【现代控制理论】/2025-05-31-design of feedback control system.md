@@ -260,3 +260,36 @@ $$
 	<img src="https://notes.sjtu.edu.cn/uploads/upload_f4885bf27d86aafc116792739b20e7f8.png" style="zoom:80%;" />
 	
 	最后，需要通过观测器的变量 $z$ 反变换回去，得到所需的 $\hat{\bar{x}}_2$ ，再将 $\hat{\bar{x}}$ 反变换回去得到 $\hat{x}$ 。
+
+* **总结**
+
+  1. 选择合适的变换矩阵 $P$ ，使得 $CP = \begin{bmatrix} I_q & 0 \end{bmatrix}$
+
+  2. 计算得到 $\bar{A} = P^{-1}AP, \bar{B} = P^{-1}B$
+
+  3. 设计 $\bar{L}$ ，使得 $\bar{A}_{22} - \bar{L}\bar{A}_{12}$ 的特征值均小于 0
+
+  4. 将设计得到的 $\bar{L}$ ，代入
+     $$
+     \begin{cases}
+     F &= \bar{A}_{22} - \bar{L}\bar{A}_{12} \\
+     G &= \bar{A}_{21} - \bar{L}\bar{A}_{11} + (\bar{A}_{22} - \bar{L}\bar{A}_{12})\bar{L} \\
+     H &= \bar{B}_2 - \bar{L}\bar{B}_1 \\
+     \end{cases}
+     $$
+     得到降维观测器：
+     $$
+     \begin{cases}
+     \dot{z} &= Fz + Gy + Hu \\
+     \hat{\bar{x}}_2 &= z + \bar{L}y
+     \end{cases}
+     $$
+
+  5. 反向推导
+     $$
+     \hat{\bar{x}} = \begin{bmatrix} \bar{x}_1 \\ \hat{\bar{x}}_2 \end{bmatrix} = \begin{bmatrix} y \\ z + \bar{L}y \end{bmatrix} \\
+     \hat{x} = P\hat{\bar{x}}
+     $$
+     最终得到观测量 $\hat{x}$ 。
+
+      
