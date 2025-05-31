@@ -270,6 +270,7 @@ $$
   3. 设计 $\bar{L}$ ，使得 $\bar{A}_{22} - \bar{L}\bar{A}_{12}$ 的特征值均小于 0
 
   4. 将设计得到的 $\bar{L}$ ，代入
+     
      $$
      \begin{cases}
      F &= \bar{A}_{22} - \bar{L}\bar{A}_{12} \\
@@ -277,7 +278,9 @@ $$
      H &= \bar{B}_2 - \bar{L}\bar{B}_1 \\
      \end{cases}
      $$
+     
      得到降维观测器：
+     
      $$
      \begin{cases}
      \dot{z} &= Fz + Gy + Hu \\
@@ -286,10 +289,12 @@ $$
      $$
 
   5. 反向推导
+     
      $$
      \hat{\bar{x}} = \begin{bmatrix} \bar{x}_1 \\ \hat{\bar{x}}_2 \end{bmatrix} = \begin{bmatrix} y \\ z + \bar{L}y \end{bmatrix} \\
      \hat{x} = P\hat{\bar{x}}
      $$
+     
      最终得到观测量 $\hat{x}$ 。
 
       
