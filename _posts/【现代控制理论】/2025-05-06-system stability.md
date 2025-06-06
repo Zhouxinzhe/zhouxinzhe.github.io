@@ -1,6 +1,6 @@
 ---
 layout:       post
-title:        "【现代控制理论】- System Stability"
+title:        "【现代控制理论】4-System Stability"
 author:       "Orchid"
 header-style: text
 catalog:      true

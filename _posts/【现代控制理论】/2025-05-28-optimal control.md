@@ -1,6 +1,6 @@
 ---
 layout:       post
-title:        "【现代控制理论】- Optimal Control"
+title:        "【现代控制理论】6-Optimal Control"
 author:       "Orchid"
 header-style: text
 catalog:      true
@@ -540,7 +540,7 @@ $$
   &= \int_{0}^{\infty} x^\top \left[ Q + K^\top R K + PA + A^\top P - PBK - K^\top B^\top P \right] x \mathrm{d}t + x_0^\top P x_0
   \end{align*}
   $$
- 
+
   我们的目标是选择 $K$ 使得性能指标 $\mathcal{J}$ 取到最小值。可以发现:
   
   $$

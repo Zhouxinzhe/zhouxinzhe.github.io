@@ -1,6 +1,6 @@
 ---
 layout:       post
-title:        "【现代控制理论】- State Response"
+title:        "【现代控制理论】2-State Response"
 author:       "Orchid"
 header-style: text
 catalog:      true

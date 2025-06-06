@@ -1,6 +1,6 @@
 ---
 layout:       post
-title:        "【现代控制理论】- Design of Feedback Control System"
+title:        "【现代控制理论】5-Design of Feedback Control System"
 author:       "Orchid"
 header-style: text
 catalog:      true

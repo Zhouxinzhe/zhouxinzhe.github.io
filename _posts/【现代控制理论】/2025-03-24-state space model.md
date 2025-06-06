@@ -1,6 +1,6 @@
 ---
 layout:       post
-title:        "【现代控制理论】- State Space Model"
+title:        "【现代控制理论】1-State Space Model"
 author:       "Orchid"
 header-style: text
 catalog:      true

@@ -1,6 +1,6 @@
 ---
 layout:       post
-title:        "【现代控制理论】- Controllability and Observability"
+title:        "【现代控制理论】3-Controllability and Observability"
 author:       "Orchid"
 header-style: text
 catalog:      true
