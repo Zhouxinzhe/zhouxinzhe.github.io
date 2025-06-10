@@ -23,8 +23,8 @@ tags:
 ![](https://notes.sjtu.edu.cn/uploads/upload_e602e35335efe3e069c8d458ad80aaaa.png)
 
 * 最天真的想法：对于任意同样的输入 $e(t)$，上述两个控制器的输出 $\hat{u}(t) = \bar{u}(t)$，那么两者性质完全一致。但显然不可能对吧！
-* 稍微可行的想法：对于任意同样的输入 $e(t)$，上述两个控制器的输出 $\hat{u}(kT) = \bar{u}(kT)$ 在采样时刻相等，那么两者性质也是接近的。到要对所有的输入都保证，依旧是很难的。
-* 可行的想法：对于特殊的输入 $e(t)$，上述两个控制器的输出 $\hat{u}(kT) = \bar{u}(kT)$ 在采样时刻相等，那么两者性质也还算得上是接近的。
+* 稍微可行的想法：对于任意同样的输入 $e(t)$，上述两个控制器的输出 $\hat{u}(kT) = \bar{u}(kT) = u(kT)$ 在采样时刻相等，那么两者性质也是接近的。但要对所有的输入都保证，依旧是很难的。
+* 可行的想法：对于特殊的输入 $e(t)$，上述两个控制器的输出 $\hat{u}(kT) = \bar{u}(kT) = u(kT)$ 在采样时刻相等，那么两者性质也还算得上是接近的。
 
 那么考虑哪些特殊的输入呢？（step input、impulse input）
 
@@ -50,7 +50,7 @@ $$
 
 我们将这种离散化方法称为 **ZOH approximation method**（相当于 analog controller 和 ZOH 串联后做离散化）
 
-* $D(z)$ 的极点除了 $(1-z^{-1})$ 和 $\mathcal{Z} \left[ D_a(s) \frac{1}{s} \right]$ 中 $\frac{1}{s}$ 带来的 $z=0$，剩余的极点都是 $D_a(s)$ 的极点通过 $z = \varepsilon^{sT}$ 映射得到的
+* $D(z)$ 的极点除了 $(1-z^{-1})$ 带来的 $z=0$ 和 $\mathcal{Z} \left[ D_a(s) \frac{1}{s} \right]$ 中 $\frac{1}{s}$ 带来的 $z=\varepsilon^{0T} = 1$，剩余的极点都是 $D_a(s)$ 的极点通过 $z = \varepsilon^{sT}$ 映射得到的。
 * **$D(z)$ 与 $D_a(s)$ 的稳定性一致！**
 
 ### Impulse-invariance method
@@ -99,7 +99,7 @@ $$
 \hat{U}(s) = D_a(s) = K + \bar{D}_a(s)
 $$
 
-其中，信号 $K$ 的拉氏反变换是 $K\delta(t)$ ，该信号在时域下采样是无意义的。解决方法就是要求 $D(z)$ 的频域响应和 $D_a(s)$ 是一致的，有：
+其中，信号 $K$ 的拉氏反变换是 $K\delta(t)$ ，该信号在时域下采样是无意义的。解决方法就是要求 $D(z)$ 和 $D_a(s)$ 对于 $K$ 的频域响应是一致的，有：
 
 $$
 D(z) = K + T\mathcal{Z} \left[ \bar{D}_a(s) \right]

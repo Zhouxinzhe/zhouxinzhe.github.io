@@ -147,7 +147,7 @@ $$
     \sum_{j=0}^{l} b_j = 0
     $$
     
-    考虑最简单的情况，$b_0 = 0, \quad b_1 = -1$
+    考虑最简单的情况，$b_0 = 1, \quad b_1 = -1$
     
     $$
     D(z) = \frac{U(z)}{E(z)} = \frac{a_0 + a_1 z^{-1} + \cdots + a_m z^{-m}}{1 - z^{-1}}
@@ -173,7 +173,7 @@ $$
 
 ## Direct Synthesis  
 
-上一节是从数字控制器的输入与输出的时域关系出发，进而得到数字控制器的表达式。这一节将从系统闭环传递函数的全局视角出发，反推得到期望的数字控制器。接下来将从两点进行解释：一，在得到期望的闭环传递函数后，如何反推相应的数字控制器；二，如何得到或者说如何选择期望的闭环传递函数。（逻辑上是先“二”后“一”，但是这里“二”是主体，所有放后面讲）
+上一节是从数字控制器的输入与输出的时域关系出发，进而得到数字控制器的表达式。这一节将从系统闭环传递函数的全局视角出发，反推得到期望的数字控制器。接下来将从两点进行解释：一，在得到期望的闭环传递函数后，如何反推相应的数字控制器；二，如何得到或者说如何选择期望的闭环传递函数。（逻辑上是先“二”后“一”，但是这里“二”是主体，所以放后面讲）
 
 * **如何反推相应的数字控制器**
   
@@ -284,7 +284,7 @@ $$
     G_{cl}(z) = c_1 z^{-1} + c_2 z^{-2} + \cdots + c_N z^{-N}
     $$
 
-  * 对于大部分的 plant，都会包含延时项；特别是离散时间系统，$G(z)$ 往往包含延时项（零时刻给的输入不会在零时刻的输出直接反应），因此
+  * 对于大部分的 plant，都会包含延时项；特别是离散时间系统，$G(z)$ 往往包含延时项（零时刻给的输入不会在零时刻的输出直接反应，比如分母最高次比分子高一次），因此
     
     $$
     G_{cl}(z) = c_1 z^{-1} + c_2 z^{-2} + \cdots + c_N z^{-N}, N \geq 1 \tag{2}
@@ -311,7 +311,7 @@ $$
   $$
   \begin{align}
   &E(z) = [1 - G_{cl}(z)] R(z) = \frac{A(z) [1 - G_{cl}(z)]}{(1 - z^{-1})^q} \\
-  &e(\infty) = \lim_{z\rightarrow1}(z-1)E(z) = (z-1)\frac{A(z) [1 - G_{cl}(z)]}{(1 - z^{-1})^q} \tag{3}
+  &e(\infty) = \lim_{z\rightarrow1}(z-1)E(z) = \lim_{z\rightarrow1}(z-1)\frac{A(z) [1 - G_{cl}(z)]}{(1 - z^{-1})^q} \tag{3}
   \end{align}
   $$
   
@@ -386,20 +386,20 @@ $$
   \begin{align*}
   Q(1) > 0 &\implies \hat{\alpha} > -1 \\
   (-1)^2 Q(-1) > 0 &\implies \hat{\alpha} > 2\alpha - 1 \\
-  |a_0| < a_2 &\implies \alpha - 1 < \hat{\alpha} < \ < \alpha + 1
+  |a_0| < a_2 &\implies \alpha - 1 < \hat{\alpha}  < \alpha + 1
   \end{align*}
   $$
   
   <img src="https://notes.sjtu.edu.cn/uploads/upload_c5c064e91c91034b28c538b00a37abef.png" style="zoom: 50%;" />
 
-  会发现非常不合理的点是，并不是所有的 $\alpha$ 只要我 $\hat{\alpha}$ 估计的够准，得到的系统就一定是稳定的。那么该怎么解决这个问题呢？老师给出了一种方法（虽然我不是很理解为什么）：**用 $1 - \hat{G}_{cl}(z)$ 来消去 $\hat{G}(z)$ 的分母**
+  会发现非常不合理的点是，并不是所有的 $\alpha$ 只要我 $\hat{\alpha}$ 估计的够准，得到的系统就一定是稳定的。那么该怎么解决这个问题呢？老师给出了一种方法（虽然我不是很理解为什么）：**用 $1 - \hat{G}_{cl}(z)$ 来消去 $\hat{G}(z)$ 的分母（消去 $\hat{G}(z)$ 在单位圆上或圆外的极点）**。
   
   $$
   1 - \hat{G}_{cl}(z) = (1 + \hat{\alpha} z^{-1})(1 - z^{-1}) F(z)
   $$
 
   $$
-  D(z) = \frac{1}{\hat{G}(z)} \frac{\hat{G}_{cl}(z)}{1 - \hat{G}_{cl}(z)} = \frac{(1 - \hat{\alpha} + \hat{\alpha} z^{-1}}{2.2(1 - z^{-1})} \\
+  D(z) = \frac{1}{\hat{G}(z)} \frac{\hat{G}_{cl}(z)}{1 - \hat{G}_{cl}(z)} = \frac{(1 - \hat{\alpha}) + \hat{\alpha} z^{-1}}{2.2(1 - z^{-1})} \\
   1 + D(z)G(z) = 1 + (\alpha - \hat{\alpha})z^{-1} + (\hat{\alpha} - \alpha)z^{-2} = 0 \implies z^2 + (\alpha - \hat{\alpha})z + \hat{\alpha} - \alpha = 0 \implies \alpha - 0.5 < \hat{\alpha} < \alpha + 1
   $$
 
@@ -494,7 +494,7 @@ $$
 
 #### Dahlin’s Method
 
-Dahlin’s method 主要针对的 Plant 类型是 first-order–plustime-delay (**FOPTD**) model：
+Dahlin’s method 主要针对的 Plant 类型是 first-order–plus-time-delay (**FOPTD**) model：
 
 $$
 \begin{align}
@@ -552,7 +552,7 @@ $$
     
     <img src="https://notes.sjtu.edu.cn/uploads/upload_75ec652fbe55f95bbf5ba6b771b28dc0.png" style="zoom:67%;" />
 
-  可以看到两种方法下，控制器的输出都会在零值上下震荡（ringing）。这是我们所不期望的，因为产生纹波（intersample ripple）。而震荡的原因在于 $D(z)$ 包含震荡的极点，即 $(0.04052 + 0.03665z^{-1}) \implies z = -0.9045$。**Dahlin 提出了一种方法来消除 ringing，将产生震荡的项中的 $z^{-1}$ 用 1 来替代**：
+可以看到两种方法下，控制器的输出都会在零值上下震荡（ringing）。这是我们所不期望的，因为产生纹波（intersample ripple）。而震荡的原因在于 $D(z)$ 包含震荡的极点，即 $(0.04052 + 0.03665z^{-1}) \implies z = -0.9045$。**Dahlin 提出了一种方法来消除 ringing，将产生震荡的项中的 $z^{-1}$ 用 1 来替代**：
 
   * 修正版 Dahlin controller
     
@@ -570,13 +570,13 @@ $$
 Vogel 和 Edgar 用另一种方式来修正 Dahlin controller 来消除 ringing。考虑以下离散 Plant：
 
 $$
-G(z) = \frac{z^{-N} a_0 + a_1 z^{-1} + \cdots + a_m z^{-m}}{b_0 + b_1 z^{-1} + \cdots + b_n z^{-n}} \triangleq z^{-N} \frac{N_G(z^{-1})}{M_G(z^{-1})}
+G(z) = \frac{z^{-N} (a_0 + a_1 z^{-1} + \cdots + a_m z^{-m})}{b_0 + b_1 z^{-1} + \cdots + b_n z^{-n}} \triangleq z^{-N} \frac{N_G(z^{-1})}{M_G(z^{-1})}
 $$
 
 其中，$N_G(z^{-1})$ 为分子项，$M_G(z^{-1})$ 为分母项。修正后的期望闭环传递函数如下：
 
 $$
-G_{cl}(z) = \frac{\left(1 - e^{-T/\tau_r}\right)z^{-N-1}}{1 - e^{-T/\tau_r}z^{-1}}
+G_{cl}(z) = \frac{\left(1 - e^{-T/\tau_r}\right)}{1 - e^{-T/\tau_r}z^{-1}}\frac{N_G(z^{-1})}{N_G(1)}z^{-N-1}
 $$
 
 其中，$N_G(1)$ 就是将分子项中的 $z^{-1}$ 用 1 来代入得到的数。此时反推得到的数字控制器如下：
@@ -598,7 +598,7 @@ $$
    \tilde G(z) = \tilde G_+(z) \tilde G_-(z)
    $$
    
-   将 Plant 拆分成两部分，其中 $\tilde G_+(z)$  包含所有的时延项 $z^{-1}$、包含所有落在单位圆上或外的零点、包含落在 $(-1,0)$ 上的零点，同时要配一个系数使得 $\tilde G_+(1) = 1$。拆出来的另一部分就是 $\tilde G_-(z)$
+   将 Plant 拆分成两部分，其中 $\tilde G_+(z)$  包含所有的时延项 $z^{-1}$、包含所有落在单位圆外的零点、包含落在 $(-1,0)$ 上的零点，同时要配一个系数使得 $\tilde G_+(1) = 1$。拆出来的另一部分就是 $\tilde G_-(z)$
 
 2. 加上滤波器
    
@@ -628,4 +628,4 @@ $$
      $$
      D(z) = \frac{1}{\tilde G_-(z)} = \frac{1 - 1.896z^{-1} + 0.8988z^{-2}}{-0.12644}
      $$
-     
+

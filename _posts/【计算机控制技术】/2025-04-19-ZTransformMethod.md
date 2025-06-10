@@ -24,7 +24,7 @@ tags:
   $$
   E^{\star}(s) = \sum_{n=0}^{\infty} e(nT) \varepsilon^{-nTs} \\
   \text{let} \quad z =  \varepsilon^{Ts} \\
-  E^{\star}(z) = \sum_{n=0}^{\infty} e(nT) z^{-n}
+  E(z) = \sum_{n=0}^{\infty} e(nT) z^{-n}
   $$
   
   很轻松的转换成了 z 的无穷级数，并且是 rational function of z 。

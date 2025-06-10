@@ -10,7 +10,7 @@ tags:
     - notes
 ---
 
-上一章介绍了 Emulation Method for Digital Controller Design，主要的设计思路是先在连续时间系统中设计符合要求的模拟控制器，再将其以不同方式离散化成数字控制器。这种 Emulation 的思想是非常好的，但是也存在很多缺陷：对采样频率要求高（至少是信号带宽的20倍）、离散控制器存在时滞问题（Step-invariance method 的 ZOH 近似）……
+上一章介绍了 Emulation Method for Digital Controller Design，主要的设计思路是先在连续时间系统中设计符合要求的模拟控制器，再将其以不同方式离散化成数字控制器。这种 Emulation 的思想是非常好的，但是也存在很多缺陷：对采样频率要求高（*至少是信号带宽的20倍*）、离散控制器存在时滞问题（Step-invariance method 的 ZOH 近似）……
 
 因此，需要直接在离散域下设计数字控制器的方法！（*一般来说，采样频率小于10倍信号带宽时需要直接设计*）
 
@@ -40,7 +40,7 @@ $$
 
 $$
 \begin{aligned}
-\mathbf{A} &= \boldsymbol{\Phi}(T) = e^{AT}, \quad \mathbf{B} = \int_{0}^{T} \boldsymbol{\Phi}(\tau) d\tau \mathbf{B}_a, \quad \mathbf{C} = \mathbf{C}_a, \quad \mathbf{D} = \mathbf{D}_a
+\mathbf{A} &= \boldsymbol{\Phi}(T) = e^{A_aT}, \quad \mathbf{B} = \int_{0}^{T} \boldsymbol{\Phi}(\tau) d\tau \mathbf{B}_a, \quad \mathbf{C} = \mathbf{C}_a, \quad \mathbf{D} = \mathbf{D}_a
 \end{aligned}
 $$
 
