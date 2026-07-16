@@ -26,6 +26,8 @@ export const profile = {
     { label: "Major rank", value: "1 / 93" }
   ],
   honors: [
+    "Principal Investigator, NSFC Young Student Basic Research Program (Undergraduate), 2025",
+    "Outstanding Bachelor's Thesis, Shanghai Jiao Tong University Class of 2026 (top 1% university-wide)",
     "National Scholarship, 2024",
     "Pan Wenyuan Scholarship, 2023",
     "Shanghai First Prize, National Undergraduate Electronics Design Contest, 2024",
