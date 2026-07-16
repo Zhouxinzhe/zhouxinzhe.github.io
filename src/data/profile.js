@@ -2,12 +2,12 @@ export const profile = {
   name: "Xinzhe Zhou",
   chineseName: "周昕哲",
   title: "Undergraduate Student in Automation",
-  affiliation: "School of Automation and Perception, Shanghai Jiao Tong University",
+  affiliation: "School of Automation and Intelligent Sensing, Shanghai Jiao Tong University",
   location: "Shanghai, China",
   email: "zhou_xinzhe@sjtu.edu.cn",
   personalEmail: "zhouxinzhe0414@gmail.com",
   github: "https://github.com/Zhouxinzhe",
-  avatar: "./img/zhouxinzhe.jpg",
+  avatar: "./img/xinzhe-zhou-profile.jpg",
   heroImage: "./img/home-bg-geek.jpg",
   interests: [
     "Multi-agent systems",
@@ -47,22 +47,22 @@ export const profile = {
       year: "2025",
       title:
         "A General and Efficient SE(3)-Equivariant Graph Framework: Encoding Symmetries with Complete Differential Invariants and Frames",
-      authors: "Xinzhe Zhou et al.",
+      authors: "Xuyang Wang, Xinzhe Zhou, Tao Xu, Xiaoming Duan, Jianping He",
       venue: "Manuscript / under review",
       status: "Manuscript",
       summary:
         "Develops a general SE(3)-equivariant graph framework that encodes symmetry through complete differential invariants and local frames.",
-      links: []
+      links: [{ label: "Paper", url: "https://openreview.net/forum?id=JN2h0CpdCO" }]
     },
     {
       year: "2026",
       title: "SE(3)-Equivariant Flow Matching with Gaussian Process Priors for Geometric Trajectory Prediction",
-      authors: "Xinzhe Zhou et al.",
+      authors: "Xuyang Wang, Xinzhe Zhou, Xiaoming Duan, Jianping He",
       venue: "International Conference on Machine Learning (ICML), 2026",
       status: "ICML 2026",
       summary:
         "Combines SE(3)-equivariant flow matching with Gaussian process priors for geometry-aware trajectory prediction.",
-      links: []
+      links: [{ label: "Paper", url: "https://openreview.net/forum?id=FR0ZFbkGnX" }]
     },
     {
       year: "2026",

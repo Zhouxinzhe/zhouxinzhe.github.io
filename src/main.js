@@ -65,16 +65,25 @@ function renderHome() {
         </dl>
       </aside>
     </section>
-    <section class="section split">
-      <div>
+    <section class="section focus-section">
+      <div class="focus-intro">
         <p class="section-label">Research</p>
         <h2>Current Focus</h2>
         <div class="tag-list">
           ${profile.interests.map((interest) => `<span>${interest}</span>`).join("")}
         </div>
       </div>
-      <div class="paper-list compact">
+      <div class="focus-papers">
+        <div class="section-heading-row">
+          <div>
+            <p class="section-label">Selected Publications</p>
+            <h2>Research Output</h2>
+          </div>
+          <a class="text-link" href="./academic.html">Academic profile</a>
+        </div>
+        <div class="paper-list compact">
         ${profile.publications.map(publicationCard).join("")}
+        </div>
       </div>
     </section>
     <section class="section">
@@ -167,7 +176,7 @@ function renderAbout() {
         <p class="section-label">Profile</p>
         <h2>Education & Research</h2>
         <p>
-          我目前在上海交通大学自动化与感知学院就读自动化专业，研究兴趣主要集中在
+          我目前在上海交通大学自动化与感知学院（School of Automation and Intelligent Sensing）就读自动化专业，研究兴趣主要集中在
           多智能体系统、编队控制、机器人、图神经网络与几何深度学习。
         </p>
         <p>

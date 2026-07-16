@@ -1,6 +1,6 @@
 :root {
   color-scheme: light;
-  --paper: #f7f5ef;
+  --paper: #f7f6f1;
   --surface: #ffffff;
   --ink: #1f292b;
   --muted: #62706b;
@@ -8,7 +8,7 @@
   --accent: #28575c;
   --accent-soft: #dfe9e5;
   --gold: #9b7a38;
-  --shadow: 0 20px 60px rgba(34, 45, 45, 0.08);
+  --shadow: 0 12px 34px rgba(34, 45, 45, 0.06);
 }
 
 * {
@@ -182,7 +182,7 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 18px;
-  background: rgba(255, 255, 255, 0.66);
+  background: rgba(255, 255, 255, 0.78);
   box-shadow: var(--shadow);
 }
 
@@ -244,6 +244,28 @@ dd,
   font-family: Georgia, "Times New Roman", serif;
 }
 
+.focus-section {
+  display: grid;
+  gap: 40px;
+}
+
+.focus-intro {
+  max-width: 760px;
+}
+
+.focus-papers {
+  padding-top: 34px;
+  border-top: 1px solid var(--line);
+}
+
+.focus-papers .section-heading-row {
+  margin-bottom: 20px;
+}
+
+.focus-papers .section-heading-row h2 {
+  margin-bottom: 0;
+}
+
 .split {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -283,7 +305,7 @@ dd,
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 18px;
-  background: var(--surface);
+  background: rgba(255, 255, 255, 0.84);
 }
 
 .paper-year {
@@ -307,6 +329,10 @@ dd,
   margin-bottom: 8px;
   font-size: 20px;
   line-height: 1.35;
+}
+
+.paper-card:hover {
+  border-color: #b6c1ba;
 }
 
 .paper-card p {

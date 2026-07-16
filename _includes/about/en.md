@@ -2,7 +2,7 @@ Hey, I'm Xinzhe Zhou, an undergraduate student in Automation at Shanghai Jiao To
 
 #### About Me
 
-I am currently pursuing Automation at the School of Automation and Perception (formerly the School of Electronic, Information and Electrical Engineering) at Shanghai Jiao Tong University. My core-course average is 94.678, my GPA is 4.12/4.3, and I rank 1st among 93 students in my major. My current research interests include multi-agent systems, formation control, robotics, graph neural networks, and geometric deep learning.
+I am currently pursuing Automation at the School of Automation and Intelligent Sensing at Shanghai Jiao Tong University. My core-course average is 94.678, my GPA is 4.12/4.3, and I rank 1st among 93 students in my major. My current research interests include multi-agent systems, formation control, robotics, graph neural networks, and geometric deep learning.
 
 #### Achievements
 
