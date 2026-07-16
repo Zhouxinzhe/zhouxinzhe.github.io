@@ -1,10 +1,10 @@
 # Site settings
-title: Orchid Blog
-SEOTitle: 周昕哲的博客 | Orchid Blog
+title: Xinzhe Zhou
+SEOTitle: 周昕哲 | Xinzhe Zhou
 header-img: img/home-bg.jpg
 email: zhouxinzhe0414@gmail.com
-description: "这里是 @Orchid周昕哲 的个人博客，与你一起发现更大的世界"
-keyword: "周昕哲, Orchid, 博客"
+description: "周昕哲，上海交通大学自动化专业本科生；研究兴趣包括多智能体系统、编队控制、机器人与几何深度学习。"
+keyword: "周昕哲, Xinzhe Zhou, Shanghai Jiao Tong University, SJTU, 自动化, 多智能体系统, 编队控制, 机器人, 几何深度学习"
 url: "" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 
@@ -76,7 +76,7 @@ netease_comment: false
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
-sidebar-about-description: "Fighting for the bright future."
+sidebar-about-description: "Automation student at SJTU. Multi-agent systems, robotics, and geometric learning."
 sidebar-avatar: https://avatars.githubusercontent.com/u/119389823?s=400&u=77cba1d1c3a5b3e2c3a18cd7421fc1ae6935a6c9&v=4 # use absolute URL, seeing it's used in both `/` and `/about/`
 sidebar-wechat: zxz1150146797
 sidebar-email: zhou_xinzhe@sjtu.edu.cn

@@ -1,46 +1,26 @@
----
-layout: page
-description: "「离开世界之前 一切都是过程」"
----
-
-{% for post in paginator.posts %}
-<div class="post-preview">
-    <a href="{{ post.url | prepend: site.baseurl }}">
-        <h2 class="post-title">
-            {{ post.title }}
-        </h2>
-        {% if post.subtitle %}
-        <h3 class="post-subtitle">
-            {{ post.subtitle }}
-        </h3>
-        {% endif %}
-        <div class="post-content-preview">
-            {% if post.lang == 'en' %}
-                {{ post.content | strip_html | truncate:300 }}
-            {% else %}
-                {{ post.content | strip_html | truncate:200 }}
-            {% endif %}
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
-    </p>
-</div>
-<hr>
-{% endfor %}
-
-<!-- Pager -->
-{% if paginator.total_pages > 1 %}
-<ul class="pager">
-    {% if paginator.previous_page %}
-    <li class="previous">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
-    </li>
-    {% endif %}
-    {% if paginator.next_page %}
-    <li class="next">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
-    </li>
-    {% endif %}
-</ul>
-{% endif %}
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="周昕哲，上海交通大学自动化专业本科生；研究兴趣包括多智能体系统、编队控制、机器人与几何深度学习。">
+    <meta name="keywords" content="周昕哲, Xinzhe Zhou, SJTU, 自动化, 多智能体系统, 编队控制, 机器人, 几何深度学习">
+    <meta name="theme-color" content="#f7f5ef">
+    <meta property="og:title" content="周昕哲 | Xinzhe Zhou">
+    <meta property="og:description" content="Personal, academic, and research homepage of Xinzhe Zhou.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./img/zhouxinzhe.jpg">
+    <title>周昕哲 | Xinzhe Zhou</title>
+    <link rel="icon" href="./img/favicon.ico">
+    <link rel="manifest" href="./pwa/manifest.json">
+    <link rel="stylesheet" href="./src/styles.css">
+    <script>
+      window.MathJax = { tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]] } };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  </head>
+  <body data-page="home">
+    <div id="app"></div>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

@@ -1,8 +1,8 @@
-Hey, I'm Xinzhe Zhou, a rather laid-back student at Shanghai Jiao Tong University who tends to procrastinate until the last moment and then cram.
+Hey, I'm Xinzhe Zhou, an undergraduate student in Automation at Shanghai Jiao Tong University. This site collects my study notes, research updates, and a few fragments from ordinary life.
 
 #### About Me
 
-I am currently pursuing Automation at the School of Automation and Sensing Technology (formerly the School of Electronic, Information and Electrical Engineering) at Shanghai Jiao Tong University. I have a core academic credits of 94.678, a GPA of 4.12/4.3, and rank 1st among 93 students in my major. However, I don't think this is a big deal. I just happened to like my major (do I really like it?) and put in a little effort (did I really work hard?). It seems that apart from my academic performance, I have nothing else to be proud of.
+I am currently pursuing Automation at the School of Automation and Perception (formerly the School of Electronic, Information and Electrical Engineering) at Shanghai Jiao Tong University. My core-course average is 94.678, my GPA is 4.12/4.3, and I rank 1st among 93 students in my major. My current research interests include multi-agent systems, formation control, robotics, graph neural networks, and geometric deep learning.
 
 #### Achievements
 
@@ -23,9 +23,13 @@ I am easygoing with an MBTI type of INFJ. I'm not a social butterfly, but I can 
 
 #### Research Experience
 
-- 2023年4月~2024年4月，第27期大创项目——基于轨迹的模仿学习算法验证平台。
-- 2025年4月，《 Formation Maneuver Control Based on the Augmented Laplacian Method 》（一作，2025 CDC 在投）
-- 2025年5月，《 SE(3)-Equivariant Graph Neural Networks with Complete Differential Frames and Invariants 》（混的二作，2025 NeurIPS 在投） 
+- Apr. 2023 - Apr. 2024, undergraduate innovation project on a trajectory-based imitation learning algorithm verification platform.
+- 2025, "Formation Maneuver Control Based on the Augmented Laplacian Method", IEEE CDC 2025, arXiv:2505.05795.
+- 2025, "A General and Efficient SE(3)-Equivariant Graph Framework: Encoding Symmetries with Complete Differential Invariants and Frames".
+- 2026, "SE(3)-Equivariant Flow Matching with Gaussian Process Priors for Geometric Trajectory Prediction", ICML 2026.
+- 2026, "BridgeFlow: Fast and Robust SE(2)-Equivariant Motion Planning with Flow Matching", IROS 2026, arXiv version not yet uploaded.
+
+For a more formal research profile, see [Academic](/academic/).
 
 #### My Future
 

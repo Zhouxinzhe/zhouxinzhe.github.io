@@ -1,16 +1,19 @@
----
-layout: default
-title: 404
-hide-in-nav: true
-description: "你来到了没有知识的荒原 :("
-header-img: "img/404-bg.jpg"
-permalink: /404.html
----
-
-
-<!-- Page Header -->
-{% include intro-header.html type="page" short='true' %}
-
-<script>
-	document.body.classList.add('page-fullscreen');
-</script>
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#f7f5ef">
+    <title>Not Found | 周昕哲</title>
+    <link rel="icon" href="./img/favicon.ico">
+    <link rel="stylesheet" href="./src/styles.css">
+    <script>
+      window.MathJax = { tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]] } };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  </head>
+  <body data-page="not-found">
+    <div id="app"></div>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
