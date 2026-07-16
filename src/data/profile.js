@@ -7,14 +7,18 @@ export const profile = {
   email: "zhou_xinzhe@sjtu.edu.cn",
   personalEmail: "zhouxinzhe0414@gmail.com",
   github: "https://github.com/Zhouxinzhe",
-  avatar: "./img/xinzhe-zhou-profile.jpg",
+  avatar: "./img/zhouxinzhe.jpg",
   heroImage: "./img/home-bg-geek.jpg",
   interests: [
     "Multi-agent systems",
     "Formation control",
     "Robotics",
     "Graph neural networks",
-    "Geometric deep learning"
+    "Geometric deep learning",
+    "Generative Model",
+    "Flow Matching",
+    "Motion Planning",
+    "Reinforcement Learning"
   ],
   metrics: [
     { label: "GPA", value: "4.12 / 4.3" },

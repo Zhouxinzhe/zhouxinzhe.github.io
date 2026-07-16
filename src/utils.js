@@ -52,6 +52,12 @@ export function markdownToHtml(markdown = "") {
     return token;
   });
 
+  source = source.replace(/(^|\n)[ \t]*(\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\])(?=\s*(?:\n|$))/g, (_, prefix, formula) => {
+    const token = `@@MATH_${blocks.length}@@`;
+    blocks.push(`<div class="math-display">${escapeHtml(formula.trim())}</div>`);
+    return `${prefix}${token}`;
+  });
+
   const lines = source.split("\n");
   const html = [];
   let list = null;
@@ -78,6 +84,13 @@ export function markdownToHtml(markdown = "") {
     }
 
     if (line.startsWith("@@CODE_")) {
+      flushParagraph();
+      closeList();
+      html.push(line);
+      continue;
+    }
+
+    if (line.startsWith("@@MATH_")) {
       flushParagraph();
       closeList();
       html.push(line);
@@ -123,7 +136,7 @@ export function markdownToHtml(markdown = "") {
   flushParagraph();
   closeList();
 
-  return html.join("\n").replace(/@@CODE_(\d+)@@/g, (_, index) => blocks[Number(index)] ?? "");
+  return html.join("\n").replace(/@@(?:CODE|MATH)_(\d+)@@/g, (_, index) => blocks[Number(index)] ?? "");
 }
 
 function inlineMarkdown(value) {

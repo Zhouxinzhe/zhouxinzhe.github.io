@@ -32,6 +32,25 @@ function shell(content) {
       <a href="mailto:${profile.email}">${profile.email}</a>
     </footer>
   `;
+  typesetMath(app);
+}
+
+function typesetMath(root) {
+  const render = () => {
+    const mathJax = window.MathJax;
+    if (!mathJax?.typesetPromise) return;
+
+    mathJax.typesetClear([root]);
+    mathJax.typesetPromise([root]).catch((error) => {
+      console.error("MathJax rendering failed:", error);
+    });
+  };
+
+  if (window.MathJax?.startup?.promise) {
+    window.MathJax.startup.promise.then(render);
+  } else {
+    window.addEventListener("mathjax-ready", render, { once: true });
+  }
 }
 
 function isActive(label) {
@@ -43,7 +62,7 @@ function renderHome() {
   shell(`
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">Automation · Multi-agent Systems · Robotics</p>
+        <p class="eyebrow">Shanghai Jiao Tong University</p>
         <h1>${profile.name}<br><span>${profile.chineseName}</span></h1>
         <p class="lead">
           Undergraduate student at Shanghai Jiao Tong University. I write about control,
@@ -113,7 +132,6 @@ function renderAcademic() {
       <div class="hero-actions">
         <a href="mailto:${profile.email}">Email</a>
         <a href="${profile.github}">GitHub</a>
-        <a href="https://arxiv.org/abs/2505.05795">arXiv</a>
       </div>
     </section>
     <section class="section split">

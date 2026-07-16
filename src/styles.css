@@ -98,7 +98,7 @@ main {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
+  grid-template-columns: minmax(0, 1.3fr) minmax(330px, 0.7fr);
   gap: 36px;
   min-height: 620px;
   align-items: center;
@@ -595,6 +595,17 @@ dd,
 .markdown-body ul,
 .markdown-body ol {
   margin: 18px 0;
+}
+
+.markdown-body .math-display {
+  overflow-x: auto;
+  margin: 24px 0;
+  padding: 4px 0;
+  text-align: center;
+}
+
+.markdown-body mjx-container[display="true"] {
+  margin: 0 !important;
 }
 
 .markdown-body pre {
