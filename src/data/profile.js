@@ -77,8 +77,8 @@ export const profile = {
       venue: "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2026",
       status: "IROS 2026",
       summary:
-        "Studies fast and robust SE(2)-equivariant motion planning through flow matching. arXiv version not yet uploaded.",
-      links: []
+        "Studies fast and robust SE(2)-equivariant motion planning through flow matching.",
+      links: [{ label: "arXiv", url: "https://arxiv.org/abs/2607.14725" }]
     }
   ],
   experience: [
