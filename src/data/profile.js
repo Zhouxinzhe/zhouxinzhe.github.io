@@ -73,7 +73,7 @@ export const profile = {
     {
       year: "2026",
       title: "BridgeFlow: Fast and Robust SE(2)-Equivariant Motion Planning with Flow Matching",
-      authors: "Xinzhe Zhou et al.",
+      authors: "Xinzhe Zhou, Xuyang Wang, Xiaoming Duan, Jianping He",
       venue: "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2026",
       status: "IROS 2026",
       summary:
