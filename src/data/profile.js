@@ -95,10 +95,16 @@ export const profile = {
         "Research around complete differential frames, invariants, and geometry-aware graph representation learning."
     },
     {
-      time: "2023 - 2024",
-      title: "Undergraduate innovation project",
+      time: "2026",
+      title: "SE(3)-equivariant trajectory prediction",
       description:
-        "Trajectory-based imitation learning algorithm verification platform."
+        "Geometry-aware trajectory prediction through SE(3)-equivariant flow matching with Gaussian process priors."
+    },
+    {
+      time: "2026",
+      title: "SE(2)-equivariant motion planning",
+      description:
+        "Fast and robust motion planning through equivariant flow matching, developed in BridgeFlow."
     }
   ]
 };

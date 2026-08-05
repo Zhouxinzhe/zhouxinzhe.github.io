@@ -26,7 +26,11 @@ export function summarize(value = "", length = 150) {
   const text = value
     .replace(/```[\s\S]*?```/g, " ")
     .replace(/!\[[^\]]*]\([^)]+\)/g, " ")
-    .replace(/\[[^\]]+]\([^)]+\)/g, "$1")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\$\$[\s\S]*?\$\$/g, " ")
+    .replace(/\\\[[\s\S]*?\\\]/g, " ")
+    .replace(/\$[^$\n]+\$/g, " ")
+    .replace(/\[([^\]]+)]\([^)]+\)/g, "$1")
     .replace(/[#>*_`$-]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
@@ -61,6 +65,7 @@ export function markdownToHtml(markdown = "") {
   const lines = source.split("\n");
   const html = [];
   let list = null;
+  let listItemOpen = false;
   let paragraph = [];
 
   const flushParagraph = () => {
@@ -71,28 +76,43 @@ export function markdownToHtml(markdown = "") {
 
   const closeList = () => {
     if (!list) return;
+    if (listItemOpen) {
+      html.push("</li>");
+      listItemOpen = false;
+    }
     html.push(`</${list}>`);
     list = null;
   };
 
-  for (const rawLine of lines) {
+  for (let lineIndex = 0; lineIndex < lines.length; lineIndex += 1) {
+    const rawLine = lines[lineIndex];
     const line = rawLine.trim();
     if (!line) {
-      flushParagraph();
-      closeList();
+      const nextLine = lines
+        .slice(lineIndex + 1)
+        .map((candidate) => candidate.trim())
+        .find((candidate) => candidate && !candidate.startsWith("@@MATH_")) ?? "";
+      const continuesList =
+        (list === "ol" && /^\d+\.\s+/.test(nextLine)) ||
+        (list === "ul" && /^[-*]\s+/.test(nextLine));
+
+      if (!continuesList) {
+        flushParagraph();
+        closeList();
+      }
       continue;
     }
 
     if (line.startsWith("@@CODE_")) {
       flushParagraph();
-      closeList();
+      if (!listItemOpen) closeList();
       html.push(line);
       continue;
     }
 
     if (line.startsWith("@@MATH_")) {
       flushParagraph();
-      closeList();
+      if (!listItemOpen) closeList();
       html.push(line);
       continue;
     }
@@ -114,7 +134,9 @@ export function markdownToHtml(markdown = "") {
         list = "ul";
         html.push("<ul>");
       }
-      html.push(`<li>${inlineMarkdown(unordered[1])}</li>`);
+      if (listItemOpen) html.push("</li>");
+      html.push(`<li>${inlineMarkdown(unordered[1])}`);
+      listItemOpen = true;
       continue;
     }
 
@@ -126,7 +148,9 @@ export function markdownToHtml(markdown = "") {
         list = "ol";
         html.push("<ol>");
       }
-      html.push(`<li>${inlineMarkdown(ordered[1])}</li>`);
+      if (listItemOpen) html.push("</li>");
+      html.push(`<li>${inlineMarkdown(ordered[1])}`);
+      listItemOpen = true;
       continue;
     }
 
@@ -140,9 +164,26 @@ export function markdownToHtml(markdown = "") {
 }
 
 function inlineMarkdown(value) {
-  return escapeHtml(value)
+  const images = [];
+  const source = String(value).replace(/<img\b[^>]*>/gi, (tag) => {
+    const src = tag.match(/\bsrc\s*=\s*["']([^"']+)["']/i)?.[1]?.trim();
+    const alt = tag.match(/\balt\s*=\s*["']([^"']*)["']/i)?.[1]?.trim() || "";
+
+    if (!src || !isSafeImageSource(src)) return "";
+
+    const token = `@@INLINE_IMAGE_${images.length}@@`;
+    images.push(`<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="lazy">`);
+    return token;
+  });
+
+  return escapeHtml(source)
     .replace(/!\[([^\]]*)]\(([^)]+)\)/g, '<img src="$2" alt="$1">')
     .replace(/\[([^\]]+)]\(([^)]+)\)/g, '<a href="$2">$1</a>')
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
-    .replace(/`([^`]+)`/g, "<code>$1</code>");
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/@@INLINE_IMAGE_(\d+)@@/g, (_, index) => images[Number(index)] ?? "");
+}
+
+function isSafeImageSource(value) {
+  return /^(https?:\/\/|\/(?!\/)|\.\.?\/)/i.test(value);
 }

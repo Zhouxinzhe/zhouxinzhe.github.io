@@ -66,7 +66,7 @@ function renderHome() {
         <h1>${profile.name}<br><span>${profile.chineseName}</span></h1>
         <p class="lead">
           Undergraduate student at Shanghai Jiao Tong University. I write about control,
-          robotics, graph learning, and the technical ideas I am trying to understand well.
+          robotics, deep learning, generative model, and the technical ideas I am trying to understand well.
         </p>
         <div class="hero-actions">
           <a href="./academic.html">Academic Profile</a>
@@ -77,7 +77,7 @@ function renderHome() {
         <img src="${profile.avatar}" alt="${profile.name}">
         <div>
           <strong>${profile.title}</strong>
-          <span>${profile.affiliation}</span>
+          <span class="identity-affiliation">${profile.affiliation.split(", ").map(escapeHtml).join("<br>")}</span>
         </div>
         <dl>
           ${profile.metrics.map((item) => `<div><dt>${item.label}</dt><dd>${item.value}</dd></div>`).join("")}
@@ -134,8 +134,8 @@ function renderAcademic() {
         <a href="${profile.github}">GitHub</a>
       </div>
     </section>
-    <section class="section split">
-      <div>
+    <section class="section research-overview">
+      <div class="education-summary">
         <p class="section-label">Education</p>
         <h2>${profile.title}</h2>
         <p>${profile.affiliation}</p>
@@ -143,8 +143,9 @@ function renderAcademic() {
           ${profile.metrics.map((item) => `<div><span>${item.value}</span><small>${item.label}</small></div>`).join("")}
         </div>
       </div>
-      <div>
+      <div class="research-interests">
         <p class="section-label">Research Interests</p>
+        <h2>Geometric Learning & Control</h2>
         <div class="tag-list">${profile.interests.map((item) => `<span>${item}</span>`).join("")}</div>
       </div>
     </section>
@@ -153,28 +154,26 @@ function renderAcademic() {
       <h2>Selected Work</h2>
       <div class="paper-list">${profile.publications.map(publicationCard).join("")}</div>
     </section>
-    <section class="section split">
-      <div>
-        <p class="section-label">Experience</p>
-        <h2>Research Timeline</h2>
-        <div class="timeline">
-          ${profile.experience
-            .map(
-              (item) => `
-                <article>
-                  <time>${item.time}</time>
-                  <h3>${item.title}</h3>
-                  <p>${item.description}</p>
-                </article>`
-            )
-            .join("")}
-        </div>
+    <section class="section timeline-section">
+      <p class="section-label">Research Direction</p>
+      <h2>Research Timeline</h2>
+      <div class="timeline">
+        ${profile.experience
+          .map(
+            (item) => `
+              <article>
+                <time>${item.time}</time>
+                <h3>${item.title}</h3>
+                <p>${item.description}</p>
+              </article>`
+          )
+          .join("")}
       </div>
-      <div>
-        <p class="section-label">Honors</p>
-        <h2>Selected Awards</h2>
-        <ul class="clean-list">${profile.honors.map((honor) => `<li>${honor}</li>`).join("")}</ul>
-      </div>
+    </section>
+    <section class="section honors-section">
+      <p class="section-label">Honors</p>
+      <h2>Selected Awards</h2>
+      <ul class="clean-list two-column">${profile.honors.map((honor) => `<li>${honor}</li>`).join("")}</ul>
     </section>
   `);
 }
@@ -183,10 +182,10 @@ function renderAbout() {
   shell(`
     <section class="page-hero">
       <p class="eyebrow">About</p>
-      <h1>你好，我是${profile.chineseName}</h1>
+      <h1>About ${profile.name}</h1>
       <p class="lead">
-        上海交通大学自动化专业本科生。这个站点会继续保留学习笔记和技术博客，
-        但整体表达会更偏学术主页：更清晰地呈现研究方向、论文、项目和联系方式。
+        I am an undergraduate student in Automation at Shanghai Jiao Tong University.
+        This website brings together my research profile, publications, and technical notes.
       </p>
     </section>
     <section class="section split">
@@ -194,11 +193,12 @@ function renderAbout() {
         <p class="section-label">Profile</p>
         <h2>Education & Research</h2>
         <p>
-          我目前在上海交通大学自动化与感知学院（School of Automation and Intelligent Sensing）就读自动化专业，研究兴趣主要集中在
-          多智能体系统、编队控制、机器人、图神经网络与几何深度学习。
+          I study Automation at the School of Automation and Intelligent Sensing, Shanghai Jiao Tong University.
+          My research interests include multi-agent systems, formation control, robotics, graph neural networks,
+          and geometric deep learning.
         </p>
         <p>
-          核心学积分 94.678，绩点 4.12/4.3，专业排名 1/93。
+          I have a core average of 94.678, a GPA of 4.12/4.3, and rank 1st out of 93 students in my major.
         </p>
       </div>
       <div>
@@ -206,7 +206,7 @@ function renderAbout() {
         <h2>Get in Touch</h2>
         <ul class="contact-list">
           <li><span>Email</span><a href="mailto:${profile.email}">${profile.email}</a></li>
-          <li><span>Personal</span><a href="mailto:${profile.personalEmail}">${profile.personalEmail}</a></li>
+          <li><span>WeChat</span><strong>zxz1150146797</strong></li>
           <li><span>GitHub</span><a href="${profile.github}">Zhouxinzhe</a></li>
         </ul>
       </div>
