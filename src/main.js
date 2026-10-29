@@ -65,8 +65,8 @@ function renderHome() {
         <p class="eyebrow">Shanghai Jiao Tong University</p>
         <h1>${profile.name}<br><span>${profile.chineseName}</span></h1>
         <p class="lead">
-          Undergraduate student at Shanghai Jiao Tong University. I write about control,
-          robotics, deep learning, generative model, and the technical ideas I am trying to understand well.
+          First-year graduate student in Control Science and Engineering at Shanghai Jiao Tong University.
+          My current research focuses on offline reinforcement learning.
         </p>
         <div class="hero-actions">
           <a href="./academic.html">Academic Profile</a>
@@ -79,9 +79,6 @@ function renderHome() {
           <strong>${profile.title}</strong>
           <span class="identity-affiliation">${profile.affiliation.split(", ").map(escapeHtml).join("<br>")}</span>
         </div>
-        <dl>
-          ${profile.metrics.map((item) => `<div><dt>${item.label}</dt><dd>${item.value}</dd></div>`).join("")}
-        </dl>
       </aside>
     </section>
     <section class="section focus-section">
@@ -126,8 +123,8 @@ function renderAcademic() {
       <p class="eyebrow">${profile.affiliation}</p>
       <h1>Academic Profile</h1>
       <p class="lead">
-        My current interests lie around multi-agent systems, formation maneuver control,
-        robotics, graph neural networks, and geometric representation learning.
+        I am a first-year graduate student in Control Science and Engineering, currently focusing on
+        offline reinforcement learning. My previous work spans control, robotics, and geometric learning.
       </p>
       <div class="hero-actions">
         <a href="mailto:${profile.email}">Email</a>
@@ -139,13 +136,14 @@ function renderAcademic() {
         <p class="section-label">Education</p>
         <h2>${profile.title}</h2>
         <p>${profile.affiliation}</p>
+        <p>Undergraduate academic record</p>
         <div class="metric-row">
           ${profile.metrics.map((item) => `<div><span>${item.value}</span><small>${item.label}</small></div>`).join("")}
         </div>
       </div>
       <div class="research-interests">
         <p class="section-label">Research Interests</p>
-        <h2>Geometric Learning & Control</h2>
+        <h2>Offline Reinforcement Learning</h2>
         <div class="tag-list">${profile.interests.map((item) => `<span>${item}</span>`).join("")}</div>
       </div>
     </section>
@@ -184,7 +182,7 @@ function renderAbout() {
       <p class="eyebrow">About</p>
       <h1>About ${profile.name}</h1>
       <p class="lead">
-        I am an undergraduate student in Automation at Shanghai Jiao Tong University.
+        I am a first-year graduate student in Control Science and Engineering at Shanghai Jiao Tong University.
         This website brings together my research profile, publications, and technical notes.
       </p>
     </section>
@@ -193,12 +191,13 @@ function renderAbout() {
         <p class="section-label">Profile</p>
         <h2>Education & Research</h2>
         <p>
-          I study Automation at the School of Automation and Intelligent Sensing, Shanghai Jiao Tong University.
-          My research interests include multi-agent systems, formation control, robotics, graph neural networks,
-          and geometric deep learning.
+          I study at the School of Automation and Intelligent Sensing, Shanghai Jiao Tong University.
+          My current research focuses on offline reinforcement learning. My previous work includes multi-agent
+          control, robotics, graph neural networks, and geometric deep learning.
         </p>
         <p>
-          I have a core average of 94.678, a GPA of 4.12/4.3, and rank 1st out of 93 students in my major.
+          During my undergraduate studies in Automation, I earned a core average of 94.678 and a GPA of 4.12/4.3,
+          ranking 1st out of 93 students in my major.
         </p>
       </div>
       <div>

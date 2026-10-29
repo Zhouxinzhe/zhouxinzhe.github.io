@@ -1,7 +1,7 @@
 export const profile = {
   name: "Xinzhe Zhou",
   chineseName: "周昕哲",
-  title: "Undergraduate Student in Automation",
+  title: "First-Year Graduate Student in Control Science and Engineering",
   affiliation: "School of Automation and Intelligent Sensing, Shanghai Jiao Tong University",
   location: "Shanghai, China",
   email: "zhou_xinzhe@sjtu.edu.cn",
@@ -10,15 +10,9 @@ export const profile = {
   avatar: "./img/zhouxinzhe.jpg",
   heroImage: "./img/home-bg-geek.jpg",
   interests: [
-    "Multi-agent systems",
-    "Formation control",
-    "Robotics",
-    "Graph neural networks",
-    "Geometric deep learning",
-    "Generative Model",
-    "Flow Matching",
-    "Motion Planning",
-    "Reinforcement Learning"
+    "Offline Reinforcement Learning",
+    "Generative Policy",
+    "Motion Planning"
   ],
   metrics: [
     { label: "GPA", value: "4.12 / 4.3" },
